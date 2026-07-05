@@ -21,6 +21,17 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'guardio',
+    company: 'Guardio',
+    role: 'Fullstack Growth Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-guardio.vercel.app',
+    domain: 'guard.io',
+    accent: '#2E69FF',
+    tagline: 'Floating proof cards in their pill-and-navy language.',
+    appliedOn: '2026-07-05',
+  },
+  {
     id: 'alice',
     company: 'Alice',
     role: 'AI Software Engineer',

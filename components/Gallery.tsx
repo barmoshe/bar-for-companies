@@ -1,53 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import type { RoleType, Site } from '@/lib/sites';
+import type { Site } from '@/lib/sites';
 import { SiteCard } from './SiteCard';
 import { MissingCard } from './MissingCard';
 import { PreviewSheet } from './PreviewSheet';
 import './gallery.css';
 
-type Filter = 'all' | RoleType;
-
-const FILTERS: { key: Filter; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'ai', label: 'AI Engineering' },
-  { key: 'fullstack', label: 'Full Stack' },
-  { key: 'other', label: 'More' },
-];
-
 export function Gallery({ sites }: { sites: Site[] }) {
-  const [filter, setFilter] = useState<Filter>('all');
   const [query, setQuery] = useState('');
   const [preview, setPreview] = useState<Site | null>(null);
 
   const q = query.trim().toLowerCase();
-  const visible = sites.filter((s) => {
-    if (filter !== 'all' && s.roleType !== filter) return false;
-    if (!q) return true;
-    return s.company.toLowerCase().includes(q) || s.id.includes(q);
-  });
+  const visible = q
+    ? sites.filter(
+        (s) => s.company.toLowerCase().includes(q) || s.id.includes(q)
+      )
+    : sites;
 
   return (
     <section className="gallery container" aria-label="Application sites">
       <div className="gallery-toolbar">
-        <div
-          className="gallery-filters"
-          role="group"
-          aria-label="Filter by role"
-        >
-          {FILTERS.map((f) => (
-            <button
-              key={f.key}
-              type="button"
-              className="gallery-pill"
-              aria-pressed={filter === f.key}
-              onClick={() => setFilter(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
         <input
           className="gallery-search"
           type="search"
