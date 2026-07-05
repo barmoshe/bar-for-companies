@@ -4,6 +4,7 @@ import { useState } from 'react';
 import type { RoleType, Site } from '@/lib/sites';
 import { SiteCard } from './SiteCard';
 import { MissingCard } from './MissingCard';
+import { PreviewSheet } from './PreviewSheet';
 import './gallery.css';
 
 type Filter = 'all' | RoleType;
@@ -18,6 +19,7 @@ const FILTERS: { key: Filter; label: string }[] = [
 export function Gallery({ sites }: { sites: Site[] }) {
   const [filter, setFilter] = useState<Filter>('all');
   const [query, setQuery] = useState('');
+  const [preview, setPreview] = useState<Site | null>(null);
 
   const q = query.trim().toLowerCase();
   const visible = sites.filter((s) => {
@@ -67,7 +69,7 @@ export function Gallery({ sites }: { sites: Site[] }) {
         <ul className="gallery-grid">
           {visible.map((site) => (
             <li key={site.id}>
-              <SiteCard site={site} />
+              <SiteCard site={site} onPreview={setPreview} />
             </li>
           ))}
           <li>
@@ -75,6 +77,9 @@ export function Gallery({ sites }: { sites: Site[] }) {
           </li>
         </ul>
       )}
+      {preview ? (
+        <PreviewSheet site={preview} onClose={() => setPreview(null)} />
+      ) : null}
     </section>
   );
 }

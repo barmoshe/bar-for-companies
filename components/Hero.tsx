@@ -13,8 +13,8 @@ export function Hero({ count }: { count: number }) {
         </h1>
         <p className="hero-lead">
           Each card below is a real application: a one-page site rebuilt in that
-          company&apos;s own visual language, with my work inside it. Hover a
-          logo to preview the site, click to open it live.
+          company&apos;s own visual language, with my work inside it. Hover or
+          tap a logo to preview the site, then open it live.
         </p>
       </div>
     </header>
