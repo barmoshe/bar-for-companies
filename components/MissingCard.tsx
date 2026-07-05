@@ -7,19 +7,23 @@ export function MissingCard({ company }: { company?: string }) {
   const href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
   return (
     <a className="card card-missing" href={href}>
-      <div className="card-media card-missing-media" aria-hidden="true">
-        <span className="card-missing-mark">?</span>
-      </div>
-      <div className="card-meta">
-        <div>
-          <h2 className="card-company">Your company missing?</h2>
-          <p className="card-role">Let me know</p>
+      <span className="card-number smallcaps" aria-hidden="true">
+        No ??
+      </span>
+      <div className="card-frame card-missing-frame">
+        <div className="card-media card-missing-media" aria-hidden="true">
+          <span className="smallcaps card-missing-mark">
+            this frame is reserved
+          </span>
         </div>
       </div>
-      <p className="card-tagline">
-        Tell me where you work and I&apos;ll build yours next, usually within a
-        day or two.
-      </p>
+      <div className="card-plaque">
+        <h2 className="card-company">Your company missing?</h2>
+        <p className="card-tagline">
+          Tell me where you work and I&apos;ll build yours next, usually within
+          a day or two.
+        </p>
+      </div>
     </a>
   );
 }

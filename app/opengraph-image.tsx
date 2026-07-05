@@ -7,6 +7,10 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
+const PAPER = '#f6f4ee';
+const INK = '#24252f';
+const ACCENT = '#2745d4';
+
 export default function OgImage() {
   const accents = SITES.map((s) => s.accent)
     .filter((a) => a.startsWith('#'))
@@ -21,60 +25,78 @@ export default function OgImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: 72,
-          background: '#faf9f6',
-          color: '#22232e',
+          background: PAPER,
+          color: INK,
           fontFamily: 'sans-serif',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 16,
-            fontSize: 26,
-            fontWeight: 600,
-            letterSpacing: 2,
-            textTransform: 'uppercase',
-          }}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div
             style={{
               display: 'flex',
-              padding: '10px 26px',
-              border: '2px solid #22232e',
-              borderRadius: 999,
+              justifyContent: 'space-between',
+              fontSize: 22,
+              fontWeight: 600,
+              letterSpacing: 3,
+              textTransform: 'uppercase',
             }}
           >
-            Bar Moshe
+            <div style={{ display: 'flex' }}>
+              Bar Moshe &middot; Application Gallery
+            </div>
+            <div style={{ display: 'flex', color: '#6c6d78' }}>
+              all works live
+            </div>
           </div>
-          <div style={{ display: 'flex', color: '#6b6d7a' }}>
-            bar for companies
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3,
+            }}
+          >
+            <div style={{ display: 'flex', height: 2, background: INK }} />
+            <div style={{ display: 'flex', height: 1, background: INK }} />
           </div>
         </div>
         <div
           style={{
             display: 'flex',
-            fontSize: 62,
+            flexDirection: 'column',
+            fontSize: 60,
             fontWeight: 700,
-            lineHeight: 1.15,
-            maxWidth: 980,
+            lineHeight: 1.12,
+            maxWidth: 1000,
           }}
         >
-          When I apply somewhere, I build the company a site first.
+          <div style={{ display: 'flex' }}>When I apply somewhere,</div>
+          <div style={{ display: 'flex' }}>
+            I build the company&nbsp;
+            <span style={{ color: ACCENT }}>a site first.</span>
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: 14 }}>
+        <div style={{ display: 'flex', gap: 12 }}>
           {accents.map((accent, i) => (
             <div
               key={i}
               style={{
                 display: 'flex',
-                width: 64,
-                height: 64,
-                borderRadius: 14,
-                background: accent,
-                border: '1px solid rgba(0,0,0,0.08)',
+                width: 62,
+                height: 62,
+                background: '#fdfdfb',
+                border: '1px solid #d9d6cc',
+                padding: 8,
               }}
-            />
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  width: '100%',
+                  height: '100%',
+                  background: accent,
+                }}
+              />
+            </div>
           ))}
         </div>
       </div>

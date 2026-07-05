@@ -42,7 +42,11 @@ export function Gallery({ sites }: { sites: Site[] }) {
         <ul className="gallery-grid">
           {visible.map((site) => (
             <li key={site.id}>
-              <SiteCard site={site} onPreview={setPreview} />
+              <SiteCard
+                site={site}
+                number={sites.indexOf(site) + 1}
+                onPreview={setPreview}
+              />
             </li>
           ))}
           <li>

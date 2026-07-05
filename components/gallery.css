@@ -1,23 +1,26 @@
 .gallery {
-  padding: 40px 24px 72px;
+  padding: 8px 24px 84px;
 }
 
+/* editorial search on the rule line */
 .gallery-toolbar {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 28px;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 44px;
+  padding-bottom: 12px;
 }
 
 .gallery-search {
-  flex: 0 1 300px;
-  min-width: 210px;
-  padding: 9px 16px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
+  width: min(320px, 100%);
+  padding: 8px 2px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
   font: inherit;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .gallery-search::placeholder {
@@ -25,20 +28,21 @@
 }
 
 .gallery-search:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 1px;
-  border-radius: 999px;
+  outline: none;
+  border-bottom: 2px solid var(--accent-ui);
 }
 
 .gallery-empty {
   display: grid;
-  gap: 20px;
+  gap: 22px;
   max-width: 420px;
 }
 
 .gallery-empty p {
   margin: 0;
   color: var(--body);
+  font-family: var(--font-display);
+  font-size: 19px;
 }
 
 .gallery-grid {
@@ -47,24 +51,41 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 44px 28px;
 }
+
+/* ---------- the plate ---------- */
 
 .card {
   display: block;
   text-decoration: none;
+  position: relative;
+}
+
+.card-number {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* mat-board frame around the work */
+.card-frame {
   background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--hairline);
+  padding: 14px;
+  box-shadow: 0 1px 0 oklch(0 0 0 / 0.04);
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
 }
 
 .card-media {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: color-mix(in oklch, var(--accent) 12%, var(--surface));
+  border: 1px solid var(--hairline);
+  background: color-mix(in oklch, var(--accent) 14%, var(--surface));
 }
 
 .card-face {
@@ -72,9 +93,9 @@
   inset: 0;
   display: grid;
   place-items: center;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.3s ease;
   z-index: 2;
-  background: color-mix(in oklch, var(--accent) 12%, var(--surface));
+  background: color-mix(in oklch, var(--accent) 14%, var(--surface));
 }
 
 .card-logo {
@@ -91,87 +112,78 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
-  transition: transform 0.3s ease;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-visit {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 8px;
+  bottom: 8px;
   z-index: 3;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: oklch(0.22 0.01 260 / 0.82);
-  color: oklch(0.98 0 0);
-  font-size: 12px;
-  font-weight: 500;
+  padding: 5px 10px;
+  background: var(--accent-ui);
+  color: oklch(0.98 0.005 90);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-.card-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 16px 0;
-}
-
-.card-badge {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  border-radius: 6px;
+/* museum label */
+.card-plaque {
+  padding: 12px 2px 0;
 }
 
 .card-company {
   margin: 0;
-  font-size: 16px;
-  font-weight: 650;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 560;
   line-height: 1.25;
 }
 
-.card-role {
-  margin: 0;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.35;
-}
-
 .card-tagline {
-  margin: 8px 0 0;
-  padding: 0 16px 16px;
+  margin: 4px 0 0;
   font-size: 13.5px;
-  color: var(--body);
+  color: var(--muted);
+  line-height: 1.45;
 }
 
-.card-missing {
+/* reserved empty frame */
+.card-missing-frame {
   border-style: dashed;
-  border-color: color-mix(in oklch, var(--muted) 55%, var(--line));
+  border-color: color-mix(in oklch, var(--muted) 60%, var(--hairline));
 }
 
 .card-missing-media {
-  background: var(--bg-soft);
+  background: var(--paper-deep);
+  border-style: dashed;
   display: grid;
   place-items: center;
 }
 
 .card-missing-mark {
-  font-size: 56px;
-  font-weight: 700;
   color: var(--muted);
+  letter-spacing: 0.18em;
 }
 
-.card-missing:hover,
-.card-missing:focus-visible {
-  border-color: var(--ink);
+.card-missing:hover .card-missing-frame,
+.card-missing:focus-visible .card-missing-frame {
+  border-color: var(--accent-ui);
 }
 
-/* Desktop: logo face by default, screenshot on hover / keyboard focus */
+.card-missing:hover .card-company,
+.card-missing:focus-visible .card-company {
+  color: var(--accent-ui);
+}
+
+/* Desktop: the frame lifts off the wall and the live site appears in it */
 @media (hover: hover) {
-  .card:hover,
-  .card:focus-visible {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px oklch(0 0 0 / 0.1);
+  .card:hover .card-frame,
+  .card:focus-visible .card-frame {
+    transform: translateY(-6px);
+    border-color: var(--accent-ui);
+    box-shadow:
+      0 2px 4px oklch(0 0 0 / 0.05),
+      0 14px 34px oklch(0 0 0 / 0.14);
   }
 
   .card:hover .card-face,
@@ -181,16 +193,20 @@
 
   .card:hover .card-shot,
   .card:focus-visible .card-shot {
-    transform: scale(1.02);
+    transform: scale(1.045);
   }
 
   .card:hover .card-visit,
   .card:focus-visible .card-visit {
     opacity: 1;
   }
+
+  .card:hover .card-company {
+    color: var(--accent-ui);
+  }
 }
 
-/* Touch: dedicated mobile view. Cards are logo tiles; tapping opens a
+/* Touch: dedicated mobile view. Plates are logo tiles; tapping opens the
    preview sheet (the screenshot lives there, not in the card). */
 @media (hover: none) {
   .card-shot,
@@ -199,25 +215,27 @@
   }
 }
 
-/* Narrow screens: compact two-column tile grid */
+/* Narrow screens: compact two-column plate grid */
 @media (max-width: 720px) {
   .gallery {
-    padding: 28px 18px 56px;
+    padding: 4px 18px 56px;
   }
 
   .gallery-toolbar {
-    flex-direction: column;
-    align-items: stretch;
+    margin-bottom: 32px;
   }
 
   .gallery-search {
-    flex: 1 1 auto;
     width: 100%;
   }
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 28px 14px;
+  }
+
+  .card-frame {
+    padding: 8px;
   }
 
   .card-media {
@@ -225,34 +243,54 @@
   }
 
   .card-logo {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .card-number {
+    font-size: 11px;
+    margin-bottom: 6px;
   }
 
   .card-tagline {
     display: none;
   }
 
-  .card-meta {
-    padding: 10px 12px 12px;
-    gap: 8px;
-  }
-
-  .card-badge {
-    display: none;
+  .card-plaque {
+    padding-top: 8px;
   }
 
   .card-company {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
-/* Preview sheet (mobile tap) */
+@media (prefers-reduced-motion: reduce) {
+  .card-frame,
+  .card-face,
+  .card-shot,
+  .card-visit {
+    transition: none;
+  }
+
+  .card:hover .card-frame,
+  .card:focus-visible .card-frame {
+    transform: none;
+  }
+
+  .card:hover .card-shot,
+  .card:focus-visible .card-shot {
+    transform: none;
+  }
+}
+
+/* ---------- preview sheet (mobile tap): a lifted museum label ---------- */
+
 .sheet-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 50;
-  background: oklch(0.2 0.01 260 / 0.55);
+  z-index: 95;
+  background: oklch(0.22 0.015 268 / 0.55);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -260,11 +298,11 @@
 
 .sheet {
   background: var(--surface);
-  border-radius: 18px 18px 0 0;
+  border-top: 2px solid var(--ink);
   width: min(560px, 100%);
   max-height: 88dvh;
   overflow-y: auto;
-  padding: 14px 16px calc(20px + env(safe-area-inset-bottom));
+  padding: 16px 18px calc(20px + env(safe-area-inset-bottom));
   box-shadow: 0 -12px 40px oklch(0 0 0 / 0.25);
 }
 
@@ -275,14 +313,21 @@
   margin-bottom: 12px;
 }
 
+.card-badge {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 .sheet-company {
-  font-weight: 650;
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: 19px;
   flex: 1;
 }
 
 .sheet-close {
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   background: var(--surface);
   color: var(--ink);
   font-size: 20px;
@@ -294,8 +339,7 @@
 }
 
 .sheet-shot-wrap {
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid var(--hairline);
   overflow: hidden;
 }
 
@@ -313,31 +357,10 @@
 .sheet-visit {
   display: block;
   text-align: center;
-  background: var(--ink);
-  color: var(--surface);
+  background: var(--accent-ui);
+  color: oklch(0.98 0.005 90);
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
   padding: 13px 16px;
-  border-radius: 12px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card,
-  .card-face,
-  .card-shot,
-  .card-visit,
-  .gallery-pill {
-    transition: none;
-  }
-
-  .card:hover,
-  .card:focus-visible {
-    transform: none;
-  }
-
-  .card:hover .card-shot,
-  .card:focus-visible .card-shot {
-    transform: none;
-  }
 }

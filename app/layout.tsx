@@ -1,10 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Fraunces, Instrument_Sans } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-fraunces',
+  display: 'swap',
+  axes: ['opsz'],
+  style: ['normal', 'italic'],
+});
+
+const instrument = Instrument_Sans({
+  subsets: ['latin'],
+  variable: '--font-instrument',
   display: 'swap',
 });
 
@@ -36,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${fraunces.variable} ${instrument.variable}`}>
       <body>{children}</body>
     </html>
   );

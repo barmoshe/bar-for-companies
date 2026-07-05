@@ -21,6 +21,17 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'joomsy',
+    company: 'Joomsy',
+    role: 'Application site',
+    roleType: 'other',
+    url: 'https://bar-for-joomsy.vercel.app',
+    domain: 'joomsy.com',
+    accent: '#FFCC00',
+    tagline: 'Their googly-eyed yellow world, every graphic hand-drawn.',
+    appliedOn: '2026-07-05',
+  },
+  {
     id: 'guardio',
     company: 'Guardio',
     role: 'Fullstack Growth Engineer',

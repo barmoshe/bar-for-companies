@@ -1,20 +1,19 @@
-/* bar-for-companies: gallery of the application sites.
-   Neutral studio surface; the company brands supply the color. */
+/* bar-for-companies: an exhibition catalogue of the application sites.
+   Warm paper, ink, one klein-blue accent; the company brands live on the mats. */
 
 :root {
-  --bg: oklch(0.975 0.004 85);
-  --bg-soft: oklch(0.955 0.006 85);
-  --surface: oklch(0.995 0.002 85);
-  --ink: oklch(0.235 0.012 260);
-  --body: oklch(0.42 0.014 260);
-  --muted: oklch(0.56 0.012 260);
-  --line: oklch(0.9 0.006 85);
-  --focus: oklch(0.55 0.2 255);
-  --pill-ink: oklch(0.33 0.014 260);
-  --radius: 14px;
+  --paper: oklch(0.965 0.008 90);
+  --paper-deep: oklch(0.94 0.012 88);
+  --surface: oklch(0.985 0.005 90);
+  --ink: oklch(0.245 0.02 270);
+  --body: oklch(0.4 0.018 268);
+  --muted: oklch(0.54 0.014 268);
+  --hairline: oklch(0.82 0.014 85);
+  --accent-ui: oklch(0.46 0.19 262);
+  --font-display: var(--font-fraunces), 'Fraunces', Georgia, serif;
   --font-sans:
-    var(--font-inter), 'Inter', -apple-system, 'Segoe UI', 'Helvetica Neue',
-    Arial, sans-serif;
+    var(--font-instrument), 'Instrument Sans', 'Helvetica Neue', Arial,
+    sans-serif;
 }
 
 * {
@@ -33,13 +32,25 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+/* print grain over the whole catalogue */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 a {
@@ -58,7 +69,6 @@ img {
   background: var(--ink);
   color: var(--surface);
   padding: 10px 16px;
-  border-radius: 0 0 var(--radius) 0;
   z-index: 100;
 }
 
@@ -67,13 +77,21 @@ img {
 }
 
 :focus-visible {
-  outline: 2px solid var(--focus);
+  outline: 2px solid var(--accent-ui);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
 .container {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* shared editorial atoms */
+.smallcaps {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }

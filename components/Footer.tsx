@@ -10,13 +10,21 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
+        <p className="smallcaps footer-colophon">
+          Every site built by hand, for the company it names
+        </p>
         <p className="footer-note">
           I&apos;m Bar. I build working software fast, and I&apos;d rather show
           it than describe it. If one of these landed with you, let&apos;s talk.
         </p>
         <nav className="footer-links" aria-label="Elsewhere">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
+            <a
+              key={l.href}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {l.label}
             </a>
           ))}

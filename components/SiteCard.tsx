@@ -6,9 +6,11 @@ import { logoOf, shotOf } from '@/lib/sites';
 
 export function SiteCard({
   site,
+  number,
   onPreview,
 }: {
   site: Site;
+  number: number;
   onPreview?: (site: Site) => void;
 }) {
   const tileStyle = {
@@ -32,42 +34,40 @@ export function SiteCard({
       rel="noopener noreferrer"
       aria-label={`bar for ${site.company}, opens a preview of the live site`}
       onClick={handleClick}
+      style={{ '--accent': site.accent } as React.CSSProperties}
     >
-      <div className="card-media" style={tileStyle}>
-        <div className="card-face" style={tileStyle} aria-hidden="true">
+      <span className="card-number smallcaps" aria-hidden="true">
+        No {String(number).padStart(2, '0')}
+      </span>
+      <div className="card-frame">
+        <div className="card-media" style={tileStyle}>
+          <div className="card-face" style={tileStyle} aria-hidden="true">
+            <Image
+              className="card-logo"
+              src={logoOf(site)}
+              alt=""
+              width={72}
+              height={72}
+              loading="lazy"
+            />
+          </div>
           <Image
-            className="card-logo"
-            src={logoOf(site)}
-            alt=""
-            width={72}
-            height={72}
+            className="card-shot"
+            src={shotOf(site)}
+            alt={`Screenshot of the bar-for-${site.id} site`}
+            width={1200}
+            height={750}
             loading="lazy"
           />
+          <span className="card-visit smallcaps" aria-hidden="true">
+            visit live
+          </span>
         </div>
-        <Image
-          className="card-shot"
-          src={shotOf(site)}
-          alt={`Screenshot of the bar-for-${site.id} site`}
-          width={1200}
-          height={750}
-          loading="lazy"
-        />
-        <span className="card-visit" aria-hidden="true">
-          visit live
-        </span>
       </div>
-      <div className="card-meta">
-        <Image
-          className="card-badge"
-          src={logoOf(site)}
-          alt=""
-          width={28}
-          height={28}
-          loading="lazy"
-        />
+      <div className="card-plaque">
         <h2 className="card-company">{site.company}</h2>
+        <p className="card-tagline">{site.tagline}</p>
       </div>
-      <p className="card-tagline">{site.tagline}</p>
     </a>
   );
 }
