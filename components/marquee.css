@@ -1,0 +1,53 @@
+/* catalogue index strip: a slow run of every company in the gallery */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 9px 0;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 32px;
+  animation: marquee-scroll 60s linear infinite;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-row {
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(calc(-50% - 16px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: 100%;
+  }
+
+  .marquee-row {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .marquee-row[aria-hidden='true'] {
+    display: none;
+  }
+}

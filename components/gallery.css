@@ -4,14 +4,17 @@
 
 /* count on the left, contained search field on the right */
 .gallery-toolbar {
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 44px;
+  padding-bottom: 14px;
+}
+
+.gallery-toolbar-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  border-bottom: 1px solid var(--hairline);
-  margin-bottom: 44px;
-  padding-bottom: 14px;
 }
 
 .gallery-count {
@@ -134,44 +137,6 @@
   margin-top: 10px;
 }
 
-.gallery-cta {
-  display: inline-block;
-  padding: 11px 22px;
-  border-radius: 999px;
-  font: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.gallery-cta-primary {
-  background: var(--accent-ui);
-  border: 1px solid var(--accent-ui);
-  color: var(--on-accent);
-}
-
-.gallery-cta-primary:hover {
-  background: var(--accent-strong);
-  border-color: var(--accent-strong);
-}
-
-.gallery-cta-ghost {
-  background: transparent;
-  border: 1px solid var(--hairline);
-  color: var(--ink);
-}
-
-.gallery-cta-ghost:hover {
-  border-color: var(--accent-ui);
-  color: var(--accent-ui);
-  background: var(--accent-tint);
-}
-
 .gallery-empty-aside {
   margin: 4px 0 0;
   color: var(--muted);
@@ -197,6 +162,29 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 44px 28px;
+  position: relative;
+}
+
+.gallery-grid > li {
+  position: relative;
+  z-index: 1;
+}
+
+/* cursor paper highlight: a faint wash of lifted paper following the
+   pointer; JS writes --mx/--my/--spot-o, attached only on fine pointers */
+.gallery-grid::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--spot-o, 0);
+  background: radial-gradient(
+    480px circle at calc(var(--mx, 50%) + 40px) calc(var(--my, 50%) + 40px),
+    color-mix(in oklch, var(--surface) 55%, white),
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
 }
 
 /* ---------- the plate ---------- */
@@ -238,7 +226,6 @@
   inset: 0;
   display: grid;
   place-items: center;
-  transition: opacity 0.3s ease;
   z-index: 2;
   background: color-mix(in oklch, var(--accent) 14%, var(--surface));
 }
@@ -264,17 +251,25 @@
   position: absolute;
   right: 8px;
   bottom: 8px;
-  z-index: 3;
+  z-index: 4;
   padding: 5px 10px;
   background: var(--accent-ui);
   color: var(--on-accent);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transform: translateY(6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* museum label */
 .card-plaque {
   padding: 12px 2px 0;
+}
+
+/* thumb-size visit pill, only rendered in the mobile feed */
+.card-go {
+  display: none;
 }
 
 .card-company {
@@ -340,8 +335,9 @@
   color: var(--on-accent);
 }
 
-/* Desktop: the frame lifts off the wall and the live site appears in it */
-@media (hover: hover) {
+/* Desktop: the live site wipes across the plate like a print pulled over
+   the mat, the frame lifts, and the rest of the wall recedes */
+@media (hover: hover) and (min-width: 721px) {
   .card:hover .card-frame,
   .card:focus-visible .card-frame {
     transform: translateY(-6px);
@@ -351,43 +347,102 @@
       0 14px 34px oklch(0 0 0 / 0.14);
   }
 
-  .card:hover .card-face,
-  .card:focus-visible .card-face {
-    opacity: 0;
+  .card-shot {
+    z-index: 3;
+    clip-path: inset(0 100% 0 0);
+    transition:
+      clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .card:hover .card-shot,
   .card:focus-visible .card-shot {
-    transform: scale(1.045);
+    clip-path: inset(0 0 0 0);
+    transform: scale(1.03);
+  }
+
+  /* ink border draw around the artwork */
+  .card-media::before,
+  .card-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .card-media::before {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+  }
+
+  .card-media::after {
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+  }
+
+  .card:hover .card-media::before,
+  .card:focus-visible .card-media::before {
+    transform: scaleX(1);
+  }
+
+  .card:hover .card-media::after,
+  .card:focus-visible .card-media::after {
+    transform: scaleY(1);
   }
 
   .card:hover .card-visit,
   .card:focus-visible .card-visit {
     opacity: 1;
+    transform: none;
+    transition-delay: 0.18s;
   }
 
   .card:hover .card-company {
     color: var(--accent-ui);
   }
-}
 
-/* Touch: dedicated mobile view. Plates are logo tiles; tapping opens the
-   preview sheet (the screenshot lives there, not in the card). */
-@media (hover: none) {
-  .card-shot,
-  .card-visit {
-    display: none;
+  /* the rest of the wall steps back while one plate is lit */
+  .gallery-grid:has(.card:hover) li:not(:has(.card:hover)) .card,
+  .gallery-grid:has(.card:focus-visible) li:not(:has(.card:focus-visible)) .card {
+    opacity: 0.55;
+    filter: saturate(0.6);
+  }
+
+  .card {
+    transition:
+      opacity 0.3s ease,
+      filter 0.3s ease;
   }
 }
 
-/* Narrow screens: compact two-column plate grid */
+/* Narrow screens: a completely different layout. The grid becomes a
+   vertical snap feed of full-width plates, each showing the live shot,
+   a logo badge, the label, and a thumb-size visit pill. */
 @media (max-width: 720px) {
-  .gallery {
-    padding: 4px 18px 56px;
+  html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 118px;
   }
 
+  .gallery {
+    padding: 0 18px 96px;
+  }
+
+  /* the toolbar pins to the top of the feed */
   .gallery-toolbar {
-    margin-bottom: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--paper);
+    margin: 0 -18px 20px;
+    padding: 10px 18px 12px;
   }
 
   .gallery-field {
@@ -399,7 +454,7 @@
     font-size: 16px; /* keeps iOS from zooming on focus */
   }
 
-  .gallery-cta {
+  .gallery-empty-actions .cta {
     width: 100%;
     text-align: center;
   }
@@ -415,52 +470,123 @@
     padding: 6px 12px;
   }
 
+  /* the feed */
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px 14px;
+    display: block;
   }
 
-  .card-frame {
-    padding: 8px;
+  .gallery-grid > li {
+    min-height: 82svh;
+    display: grid;
+    align-content: center;
+    scroll-snap-align: start;
+    scroll-margin-top: 118px;
+    padding-bottom: 40px;
   }
 
-  .card-media {
-    aspect-ratio: 1 / 1;
-  }
-
-  .card-logo {
-    width: 52px;
-    height: 52px;
-  }
-
-  .card-number {
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
-
-  .card-tagline {
+  .gallery-grid::before {
     display: none;
   }
 
-  .card-plaque {
-    padding-top: 8px;
+  .card-frame {
+    padding: 10px;
+  }
+
+  /* the shot joins the flow and is always visible */
+  .card-shot {
+    position: static;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    clip-path: none;
+  }
+
+  .card-media {
+    aspect-ratio: auto;
+  }
+
+  /* the logo tile shrinks to a badge on the shot's corner */
+  .card-face {
+    inset: auto auto 10px 10px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+  }
+
+  .card-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .card-visit {
+    display: none;
+  }
+
+  .card-tagline {
+    font-size: 14px;
   }
 
   .card-company {
-    font-size: 15px;
+    font-size: 21px;
+  }
+
+  .card-go {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: 14px;
+    border-radius: 999px;
+    background: var(--accent-ui);
+    color: var(--on-accent);
+    letter-spacing: 0.1em;
+  }
+
+  .card:active .card-go {
+    background: var(--accent-strong);
+  }
+
+  /* the reserved frame keeps its dashed tile look in the feed */
+  .card-missing .card-media {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* feed polish: cards settle in as they enter the viewport
+   (compositor-driven; older browsers simply show them static) */
+@supports (animation-timeline: view()) {
+  @media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+    .gallery-grid > li > .card {
+      animation: feed-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+@keyframes feed-in {
+  from {
+    opacity: 0.4;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .card,
   .card-frame,
   .card-face,
   .card-shot,
   .card-visit,
+  .card-media::before,
+  .card-media::after,
   .gallery-field,
   .gallery-clear,
-  .gallery-cta,
-  .card-missing-cta,
-  .sheet-visit {
+  .gallery-grid::before,
+  .card-missing-cta {
     transition: none;
   }
 
@@ -475,88 +601,3 @@
   }
 }
 
-/* ---------- preview sheet (mobile tap): a lifted museum label ---------- */
-
-.sheet-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 95;
-  background: oklch(0.22 0.015 268 / 0.55);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.sheet {
-  background: var(--surface);
-  border-top: 2px solid var(--ink);
-  width: min(560px, 100%);
-  max-height: 88dvh;
-  overflow-y: auto;
-  padding: 16px 18px calc(20px + env(safe-area-inset-bottom));
-  box-shadow: 0 -12px 40px oklch(0 0 0 / 0.25);
-}
-
-.sheet-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.card-badge {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
-
-.sheet-company {
-  font-family: var(--font-display);
-  font-weight: 560;
-  font-size: 19px;
-  flex: 1;
-}
-
-.sheet-close {
-  border: 1px solid var(--hairline);
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 20px;
-  line-height: 1;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.sheet-shot-wrap {
-  border: 1px solid var(--hairline);
-  overflow: hidden;
-}
-
-.sheet-shot {
-  width: 100%;
-  height: auto;
-}
-
-.sheet-tagline {
-  margin: 12px 0 16px;
-  color: var(--body);
-  font-size: 14px;
-}
-
-.sheet-visit {
-  display: block;
-  text-align: center;
-  background: var(--accent-ui);
-  color: var(--on-accent);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 13px 16px;
-  transition: background 0.2s ease;
-}
-
-.sheet-visit:hover {
-  background: var(--accent-strong);
-}
