@@ -98,3 +98,52 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
+/* z-index ledger:
+   40 mobile sticky toolbar · 80 sticky CTA bar · 90 film grain · 100 skip link.
+   Nothing new goes above 90 except the skip link. */
+
+/* call-to-action pills, shared by hero, gallery, and sticky bar */
+.cta {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.cta-primary {
+  background: var(--accent-ui);
+  border: 1px solid var(--accent-ui);
+  color: var(--on-accent);
+}
+
+.cta-primary:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.cta-ghost {
+  background: transparent;
+  border: 1px solid var(--hairline);
+  color: var(--ink);
+}
+
+.cta-ghost:hover {
+  border-color: var(--accent-ui);
+  color: var(--accent-ui);
+  background: var(--accent-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+}
