@@ -237,7 +237,7 @@ export function Gallery({ sites }: { sites: Site[] }) {
         <ul ref={gridRef} className="gallery-grid">
           {visible.map((site) => (
             <li key={site.id} data-flip-id={site.id}>
-              <SiteCard site={site} number={sites.indexOf(site) + 1} />
+              <SiteCard site={site} />
             </li>
           ))}
           <li key="missing" data-flip-id="missing">

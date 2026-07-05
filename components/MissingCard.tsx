@@ -10,9 +10,6 @@ export function missingMailto(company?: string) {
 export function MissingCard({ company }: { company?: string }) {
   return (
     <a className="card card-missing" href={missingMailto(company)}>
-      <span className="card-number smallcaps" aria-hidden="true">
-        No ??
-      </span>
       <div className="card-frame card-missing-frame">
         <div className="card-media card-missing-media" aria-hidden="true">
           <span className="smallcaps card-missing-mark">
