@@ -10,6 +10,9 @@
   --muted: oklch(0.54 0.014 268);
   --hairline: oklch(0.82 0.014 85);
   --accent-ui: oklch(0.46 0.19 262);
+  --accent-strong: color-mix(in oklch, var(--accent-ui) 85%, var(--ink));
+  --accent-tint: color-mix(in oklch, var(--accent-ui) 12%, var(--surface));
+  --on-accent: oklch(0.98 0.005 90);
   --font-display: var(--font-fraunces), 'Fraunces', Georgia, serif;
   --font-sans:
     var(--font-instrument), 'Instrument Sans', 'Helvetica Neue', Arial,

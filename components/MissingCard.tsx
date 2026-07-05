@@ -1,12 +1,15 @@
 const EMAIL = 'Barprojectsandbuilds@gmail.com';
 
-export function MissingCard({ company }: { company?: string }) {
+export function missingMailto(company?: string) {
   const subject = company
     ? `A bar-for site for ${company}`
     : 'A bar-for site for my company';
-  const href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
+  return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
+}
+
+export function MissingCard({ company }: { company?: string }) {
   return (
-    <a className="card card-missing" href={href}>
+    <a className="card card-missing" href={missingMailto(company)}>
       <span className="card-number smallcaps" aria-hidden="true">
         No ??
       </span>
@@ -23,6 +26,7 @@ export function MissingCard({ company }: { company?: string }) {
           Tell me where you work and I&apos;ll build yours next, usually within
           a day or two.
         </p>
+        <span className="card-missing-cta smallcaps">Email me</span>
       </div>
     </a>
   );
