@@ -470,12 +470,13 @@
   }
 
   .gallery-grid > li {
-    min-height: 82svh;
-    display: grid;
-    align-content: center;
     scroll-snap-align: start;
     scroll-margin-top: 118px;
-    padding-bottom: 40px;
+    padding-bottom: 36px;
+  }
+
+  .gallery-grid > li:last-child {
+    padding-bottom: 0;
   }
 
   .gallery-grid::before {
