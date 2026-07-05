@@ -1,0 +1,254 @@
+.gallery {
+  padding: 40px 24px 72px;
+}
+
+.gallery-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.gallery-search {
+  flex: 0 1 300px;
+  min-width: 210px;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+}
+
+.gallery-search::placeholder {
+  color: var(--muted);
+}
+
+.gallery-search:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+  border-radius: 999px;
+}
+
+.gallery-empty {
+  display: grid;
+  gap: 20px;
+  max-width: 420px;
+}
+
+.gallery-empty p {
+  margin: 0;
+  color: var(--body);
+}
+
+.gallery-pill {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--pill-ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.gallery-pill:hover {
+  border-color: var(--muted);
+}
+
+.gallery-pill[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
+}
+
+.gallery-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: color-mix(in oklch, var(--accent) 12%, var(--surface));
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+  background: color-mix(in oklch, var(--accent) 12%, var(--surface));
+}
+
+.card-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px oklch(0 0 0 / 0.12));
+}
+
+.card-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.3s ease;
+}
+
+.card-visit {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: oklch(0.22 0.01 260 / 0.82);
+  color: oklch(0.98 0 0);
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 0;
+}
+
+.card-badge {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.card-company {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.card-role {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.card-tagline {
+  margin: 8px 0 0;
+  padding: 0 16px 16px;
+  font-size: 13.5px;
+  color: var(--body);
+}
+
+.card-missing {
+  border-style: dashed;
+  border-color: color-mix(in oklch, var(--muted) 55%, var(--line));
+}
+
+.card-missing-media {
+  background: var(--bg-soft);
+  display: grid;
+  place-items: center;
+}
+
+.card-missing-mark {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.card-missing:hover,
+.card-missing:focus-visible {
+  border-color: var(--ink);
+}
+
+/* Desktop: logo face by default, screenshot on hover / keyboard focus */
+@media (hover: hover) {
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px oklch(0 0 0 / 0.1);
+  }
+
+  .card:hover .card-face,
+  .card:focus-visible .card-face {
+    opacity: 0;
+  }
+
+  .card:hover .card-shot,
+  .card:focus-visible .card-shot {
+    transform: scale(1.02);
+  }
+
+  .card:hover .card-visit,
+  .card:focus-visible .card-visit {
+    opacity: 1;
+  }
+}
+
+/* Touch: screenshot always visible, logo as the meta badge */
+@media (hover: none) {
+  .card-face {
+    display: none;
+  }
+
+  .card-visit {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card-face,
+  .card-shot,
+  .card-visit,
+  .gallery-pill {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    transform: none;
+  }
+
+  .card:hover .card-shot,
+  .card:focus-visible .card-shot {
+    transform: none;
+  }
+}
