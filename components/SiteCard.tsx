@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { Site } from '@/lib/sites';
 import { logoOf, shotOf } from '@/lib/sites';
 
-export function SiteCard({ site, number }: { site: Site; number: number }) {
+export function SiteCard({ site }: { site: Site }) {
   const tileStyle = {
     '--accent': site.accent,
     ...(site.tile ? { background: site.tile } : {}),
@@ -17,9 +17,6 @@ export function SiteCard({ site, number }: { site: Site; number: number }) {
       aria-label={`bar for ${site.company}, opens the live site`}
       style={{ '--accent': site.accent } as React.CSSProperties}
     >
-      <span className="card-number smallcaps" aria-hidden="true">
-        No {String(number).padStart(2, '0')}
-      </span>
       <div className="card-frame">
         <div className="card-media" style={tileStyle}>
           <div className="card-face" style={tileStyle} aria-hidden="true">

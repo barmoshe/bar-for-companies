@@ -195,12 +195,6 @@
   position: relative;
 }
 
-.card-number {
-  display: block;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
 /* mat-board frame around the work */
 .card-frame {
   background: var(--surface);
