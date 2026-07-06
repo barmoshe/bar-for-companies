@@ -693,6 +693,17 @@ export const SITES: Site[] = [
     tagline: 'Their scan-line editorial world, my shipped-systems stack.',
     appliedOn: '2026-07-06',
   },
+  {
+    id: 'stripe',
+    company: 'Stripe',
+    role: 'Generic application',
+    roleType: 'other',
+    url: 'https://bar-for-stripe.vercel.app',
+    domain: 'stripe.com',
+    accent: '#635BFF',
+    tagline: 'Their gradient ribbon and a builds.ts code panel of my work.',
+    appliedOn: '2026-07-06',
+  },
 ];
 
 export const logoOf = (s: Site) => `/logos/${s.id}.png`;
