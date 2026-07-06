@@ -3,6 +3,8 @@
 import { useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { useGSAP } from '@gsap/react';
+import { useLang } from '@/lib/LangContext';
+import { STUDIO_URL } from '@/lib/i18n';
 import type { Site } from '@/lib/sites';
 import { gsap, Flip, ScrollTrigger, HOUSE_EASE } from '@/lib/anim';
 import { SiteCard } from './SiteCard';
@@ -13,6 +15,7 @@ const matches = (site: Site, q: string) =>
   !q || site.company.toLowerCase().includes(q) || site.id.includes(q);
 
 export function Gallery({ sites }: { sites: Site[] }) {
+  const { t, lang } = useLang();
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -135,14 +138,13 @@ export function Gallery({ sites }: { sites: Site[] }) {
     inputRef.current?.focus();
   };
 
-  const sitesWord = (n: number) => (n === 1 ? 'site' : 'sites');
   const filtering = q !== '';
 
   return (
     <section
       ref={sectionRef}
       className="gallery container"
-      aria-label="Application sites"
+      aria-label={t.gallery.sectionLabel}
     >
       <div className="gallery-toolbar">
         <div className="gallery-toolbar-row">
@@ -152,8 +154,8 @@ export function Gallery({ sites }: { sites: Site[] }) {
             aria-live="polite"
           >
             {filtering
-              ? `${visible.length} of ${sites.length} ${sitesWord(sites.length)}`
-              : `${sites.length} ${sitesWord(sites.length)}`}
+              ? t.gallery.countFiltered(visible.length, sites.length)
+              : t.gallery.count(sites.length)}
           </p>
           <div className="gallery-field">
             <svg
@@ -182,8 +184,9 @@ export function Gallery({ sites }: { sites: Site[] }) {
               ref={inputRef}
               className="gallery-search"
               type="search"
-              placeholder="Search your company"
-              aria-label="Search your company"
+              dir="auto"
+              placeholder={t.gallery.searchPlaceholder}
+              aria-label={t.gallery.searchPlaceholder}
               value={query}
               onChange={(e) => onQuery(e.target.value)}
             />
@@ -192,7 +195,7 @@ export function Gallery({ sites }: { sites: Site[] }) {
                 type="button"
                 className="gallery-clear"
                 onClick={clear}
-                aria-label="Clear search"
+                aria-label={t.gallery.clearLabel}
               >
                 &times;
               </button>
@@ -203,34 +206,27 @@ export function Gallery({ sites }: { sites: Site[] }) {
       {visible.length === 0 ? (
         <div className="gallery-empty">
           <p className="gallery-empty-kicker smallcaps">
-            Not in the catalogue yet
+            {t.gallery.emptyKicker}
           </p>
-          <p className="gallery-empty-lead">
-            No site for &quot;{query.trim()}&quot; yet. That could change
-            quickly.
-          </p>
-          <p className="gallery-empty-note">
-            Tell me where you work and I&apos;ll build yours next, usually
-            within a day or two.
-          </p>
+          <p className="gallery-empty-lead">{t.gallery.emptyLead(query.trim())}</p>
+          <p className="gallery-empty-note">{t.gallery.emptyNote}</p>
           <div className="gallery-empty-actions">
-            <a className="cta cta-primary" href={missingMailto(query.trim())}>
-              Ask me to build it
+            <a
+              className="cta cta-primary"
+              href={missingMailto(t, query.trim())}
+            >
+              {t.gallery.emptyBuild}
             </a>
             <button type="button" className="cta cta-ghost" onClick={clear}>
-              Show all sites
+              {t.gallery.emptyShowAll}
             </button>
           </div>
           <p className="gallery-empty-aside">
-            Or see how I work on my{' '}
-            <a
-              href="https://bar-builds.vercel.app/en"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              studio site
+            {t.gallery.asidePre}
+            <a href={STUDIO_URL[lang]} target="_blank" rel="noopener noreferrer">
+              {t.gallery.asideLink}
             </a>
-            .
+            {t.gallery.asidePost}
           </p>
         </div>
       ) : (

@@ -1,8 +1,12 @@
+'use client';
+
 import Image from 'next/image';
+import { useLang } from '@/lib/LangContext';
 import type { Site } from '@/lib/sites';
 import { logoOf, shotOf } from '@/lib/sites';
 
 export function SiteCard({ site }: { site: Site }) {
+  const { t } = useLang();
   const tileStyle = {
     '--accent': site.accent,
     ...(site.tile ? { background: site.tile } : {}),
@@ -14,7 +18,7 @@ export function SiteCard({ site }: { site: Site }) {
       href={site.url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`bar for ${site.company}, opens the live site`}
+      aria-label={t.card.aria(site.company)}
       style={{ '--accent': site.accent } as React.CSSProperties}
     >
       <div className="card-frame">
@@ -32,24 +36,25 @@ export function SiteCard({ site }: { site: Site }) {
           <Image
             className="card-shot"
             src={shotOf(site)}
-            alt={`Screenshot of the bar-for-${site.id} site`}
+            alt={t.card.shotAlt(site.id)}
             width={1200}
             height={750}
             sizes="(max-width: 720px) 100vw, (max-width: 1240px) 33vw, 380px"
             loading="lazy"
           />
           <span className="card-visit smallcaps" aria-hidden="true">
-            visit live
+            {t.card.visit}
           </span>
         </div>
       </div>
       <div className="card-plaque">
-        <div className="card-plaque-text">
+        {/* company names and taglines are catalogue copy and stay English */}
+        <div className="card-plaque-text" lang="en" dir="ltr">
           <h2 className="card-company">{site.company}</h2>
           <p className="card-tagline">{site.tagline}</p>
         </div>
         <span className="card-go smallcaps" aria-hidden="true">
-          Visit the live site
+          {t.card.go}
         </span>
       </div>
     </a>

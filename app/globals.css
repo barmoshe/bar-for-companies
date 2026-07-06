@@ -19,6 +19,25 @@
     sans-serif;
 }
 
+/* Hebrew page: swap to Hebrew-capable families (Fraunces and Instrument
+   carry no Hebrew glyphs) */
+html[lang='he'] {
+  --font-display: var(--font-frank), 'Frank Ruhl Libre', Georgia, serif;
+  --font-sans: var(--font-heebo), 'Heebo', Arial, sans-serif;
+}
+
+/* forced-English islands (card labels, marquee) keep the Latin stacks.
+   font-family is re-declared so children that inherit the body font
+   re-resolve against the restored vars. */
+html[lang='he'] .card-plaque-text,
+html[lang='he'] .marquee {
+  --font-display: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --font-sans:
+    var(--font-instrument), 'Instrument Sans', 'Helvetica Neue', Arial,
+    sans-serif;
+  font-family: var(--font-sans);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -67,7 +86,7 @@ img {
 
 .skip-link {
   position: absolute;
-  left: -9999px;
+  inset-inline-start: -9999px;
   top: 0;
   background: var(--ink);
   color: var(--surface);
@@ -76,7 +95,7 @@ img {
 }
 
 .skip-link:focus-visible {
-  left: 0;
+  inset-inline-start: 0;
 }
 
 :focus-visible {
@@ -144,6 +163,45 @@ img {
 
 @media (prefers-reduced-motion: reduce) {
   .cta {
+    transition: none;
+  }
+}
+
+/* EN/HE switch, lives in the hero masthead */
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.lang-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.lang-toggle button:hover {
+  color: var(--accent-ui);
+}
+
+.lang-toggle button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-toggle button {
     transition: none;
   }
 }

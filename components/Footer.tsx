@@ -1,24 +1,23 @@
+'use client';
+
+import { useLang } from '@/lib/LangContext';
+import { STUDIO_URL } from '@/lib/i18n';
 import './footer.css';
 
-const LINKS = [
-  { label: 'My studio site', href: 'https://bar-builds.vercel.app/en' },
-  { label: 'GitHub', href: 'https://github.com/barmoshe' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/barmoshe' },
-];
-
 export function Footer() {
+  const { t, lang } = useLang();
+  const links = [
+    { label: t.footer.studioLabel, href: STUDIO_URL[lang] },
+    { label: 'GitHub', href: 'https://github.com/barmoshe' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/barmoshe' },
+  ];
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <p className="smallcaps footer-colophon">
-          Every site built by hand, for the company it names
-        </p>
-        <p className="footer-note">
-          I&apos;m Bar. I build working software fast, and I&apos;d rather show
-          it than describe it. If one of these landed with you, let&apos;s talk.
-        </p>
-        <nav className="footer-links" aria-label="Elsewhere">
-          {LINKS.map((l) => (
+        <p className="smallcaps footer-colophon">{t.footer.colophon}</p>
+        <p className="footer-note">{t.footer.note}</p>
+        <nav className="footer-links" aria-label={t.footer.elsewhereLabel}>
+          {links.map((l) => (
             <a
               key={l.href}
               href={l.href}

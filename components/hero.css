@@ -20,6 +20,13 @@
   color: var(--muted);
 }
 
+.hero-masthead-end {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
 .hero-rule {
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
@@ -46,6 +53,11 @@
   background-repeat: no-repeat;
   background-size: 100% 42%;
   background-position: 0 78%;
+}
+
+/* the underline wash draws from the reading side */
+[dir='rtl'] .hero-title em {
+  background-position: 100% 78%;
 }
 
 .hero-lead {

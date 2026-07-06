@@ -1,50 +1,56 @@
+'use client';
+
+import { useLang } from '@/lib/LangContext';
 import { missingMailto } from './MissingCard';
+import { LangToggle } from './LangToggle';
 import { Marquee } from './Marquee';
 import './hero.css';
 
 export function Hero({ count, names }: { count: number; names: string[] }) {
+  const { t } = useLang();
   return (
     <header className="hero">
       <div className="container">
         <div className="hero-masthead hero-reveal" style={{ '--i': 0 } as React.CSSProperties}>
           <p className="smallcaps hero-wordmark">
-            Bar Moshe <span aria-hidden="true">&middot;</span> Application
-            Gallery
+            {t.hero.wordmarkName} <span aria-hidden="true">&middot;</span>{' '}
+            {t.hero.wordmarkRole}
           </p>
-          <p className="smallcaps hero-stamp">
-            Cat. {count} works <span aria-hidden="true">&middot;</span> all
-            live
-          </p>
+          <div className="hero-masthead-end">
+            <p className="smallcaps hero-stamp">
+              {t.hero.stampWorks(count)} <span aria-hidden="true">&middot;</span>{' '}
+              {t.hero.stampLive}
+            </p>
+            <LangToggle />
+          </div>
         </div>
         <div className="hero-rule" aria-hidden="true" />
         <h1
           className="hero-title hero-reveal"
           style={{ '--i': 1 } as React.CSSProperties}
         >
-          When I apply somewhere,
-          <br />I build the company <em>a site first.</em>
+          {t.hero.titleLine1}
+          <br />
+          {t.hero.titleLine2}
+          <em>{t.hero.titleEm}</em>
         </h1>
         <p
           className="hero-lead hero-reveal"
           style={{ '--i': 2 } as React.CSSProperties}
         >
-          Each plate below is a real application: a one-page site rebuilt in
-          that company&apos;s own visual language, with my work inside it.
-          Hover or tap a plate to see the site, then open it live.
+          {t.hero.lead}
         </p>
         <div
           className="hero-cta hero-reveal"
           style={{ '--i': 3 } as React.CSSProperties}
         >
-          <p className="smallcaps hero-cta-kicker">
-            Your company not here yet?
-          </p>
+          <p className="smallcaps hero-cta-kicker">{t.hero.kicker}</p>
           <div className="hero-cta-actions">
-            <a className="cta cta-primary" href={missingMailto()}>
-              Ask me to build it
+            <a className="cta cta-primary" href={missingMailto(t)}>
+              {t.hero.ctaBuild}
             </a>
             <a className="cta cta-ghost" href="#main">
-              Browse the gallery
+              {t.hero.ctaBrowse}
             </a>
           </div>
         </div>
@@ -60,7 +66,7 @@ export function Hero({ count, names }: { count: number; names: string[] }) {
           aria-hidden="true"
           tabIndex={-1}
         >
-          Scroll
+          {t.hero.scroll}
         </a>
       </div>
     </header>
