@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'primis',
+    company: 'Primis',
+    role: 'Full Stack / AI Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-mccann.vercel.app/primis',
+    domain: 'primis.tech',
+    accent: '#FF1455',
+    tile: '#00152A',
+    tagline: 'Their navy video-discovery world: a line-art lighthouse, an isometric player, me as the open position.',
+    appliedOn: '2026-07-06',
+  },
+  {
     id: 'mccann',
     company: 'McCann',
     role: 'Generic application',
