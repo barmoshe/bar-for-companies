@@ -657,6 +657,18 @@ export const SITES: Site[] = [
     tagline: 'A design canvas with my work already shipped on it.',
     appliedOn: '2026-07-06',
   },
+  {
+    id: 'similarweb',
+    company: 'Similarweb',
+    role: 'Generic application',
+    roleType: 'other',
+    url: 'https://bar-for-similarweb.vercel.app',
+    domain: 'similarweb.com',
+    accent: '#195AFE',
+    tile: '#071033',
+    tagline: 'Their glowing data-search widget, my work as the insights.',
+    appliedOn: '2026-07-06',
+  },
 ];
 
 export const logoOf = (s: Site) => `/logos/${s.id}.png`;
