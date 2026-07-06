@@ -669,6 +669,18 @@ export const SITES: Site[] = [
     tagline: 'Their glowing data-search widget, my work as the insights.',
     appliedOn: '2026-07-06',
   },
+  {
+    id: 'ai21',
+    company: 'AI21 Labs',
+    role: 'Generic application',
+    roleType: 'other',
+    url: 'https://bar-for-ai21.vercel.app',
+    domain: 'ai21.com',
+    accent: '#212121',
+    tile: '#FBFBFB',
+    tagline: 'Their scan-line editorial world, my shipped-systems stack.',
+    appliedOn: '2026-07-06',
+  },
 ];
 
 export const logoOf = (s: Site) => `/logos/${s.id}.png`;
