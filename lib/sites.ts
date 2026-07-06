@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'mccann',
+    company: 'McCann',
+    role: 'Generic application',
+    roleType: 'other',
+    url: 'https://bar-for-mccann.vercel.app',
+    domain: 'mccann.co.il',
+    accent: '#3021F5',
+    tile: '#141114',
+    tagline: 'Their black-canvas agency site in Hebrew RTL, with me as job 05.',
+    appliedOn: '2026-07-06',
+  },
+  {
     id: 'tesla',
     company: 'Tesla',
     role: 'Generic application',
