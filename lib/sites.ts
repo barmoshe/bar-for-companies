@@ -573,8 +573,9 @@ export const SITES: Site[] = [
     roleType: 'other',
     url: 'https://bar-for-keshet.vercel.app',
     domain: 'keshetinternational.com',
-    accent: '#6B3FA0',
-    tagline: 'Their rainbow sail mark, in a near-black show carousel.',
+    accent: '#252b3d',
+    tile: '#ffffff',
+    tagline: 'Rebuilt as mako, Keshet’s Hebrew news portal, right to left.',
     appliedOn: '2026-07-06',
   },
   {
