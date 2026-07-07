@@ -238,12 +238,13 @@
 
 /* mat-board frame around the work */
 .card-frame {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--hairline);
   padding: 14px;
   box-shadow: 0 1px 0 oklch(0 0 0 / 0.04);
+  /* transform is left to GSAP (the hover lift); CSS keeps the rest */
   transition:
-    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.28s ease,
     border-color 0.28s ease;
 }
@@ -373,13 +374,27 @@
 /* Desktop: the live site wipes across the plate like a print pulled over
    the mat, the frame lifts, and the rest of the wall recedes */
 @media (hover: hover) and (min-width: 721px) {
+  /* the lift + shadow are driven by GSAP (useCardSpotlight); CSS only
+     recolors the mat border so the two never fight over transform/shadow */
   .card:hover .card-frame,
   .card:focus-visible .card-frame {
-    transform: translateY(-6px);
     border-color: var(--accent-ui);
+  }
+
+  /* accent spotlight glow behind the lifted plate; opacity is tweened by
+     GSAP via the --glow custom property set on the .card element */
+  .card-frame::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+    opacity: var(--glow, 0);
     box-shadow:
-      0 2px 4px oklch(0 0 0 / 0.05),
-      0 14px 34px oklch(0 0 0 / 0.14);
+      0 2px 6px oklch(0 0 0 / 0.06),
+      0 16px 40px -6px color-mix(in oklch, var(--accent) 55%, transparent),
+      0 6px 16px -8px color-mix(in oklch, var(--accent) 42%, transparent);
   }
 
   .card-shot {
@@ -450,19 +465,6 @@
 
   .card:hover .card-company {
     color: var(--accent-ui);
-  }
-
-  /* the rest of the wall steps back while one plate is lit */
-  .gallery-grid:has(.card:hover) li:not(:has(.card:hover)) .card,
-  .gallery-grid:has(.card:focus-visible) li:not(:has(.card:focus-visible)) .card {
-    opacity: 0.55;
-    filter: saturate(0.6);
-  }
-
-  .card {
-    transition:
-      opacity 0.3s ease,
-      filter 0.3s ease;
   }
 }
 
@@ -611,11 +613,10 @@
   }
 
   /* Desktop: plates develop like prints as the wall scrolls up. Lives on
-     the li, NOT .card - the :has() wall-dim owns .card's opacity/filter and
-     an active animation there would override it. Uses `translate` so Flip's
-     transform and the .card-frame hover lift never collide. Stagger comes
-     from per-item animation-range offsets via the inline --i custom
-     property (time-based delays don't compose with view() timelines). */
+     the li, NOT .card, and uses `translate` so Flip's transform and the
+     GSAP .card-frame hover lift never collide. Stagger comes from per-item
+     animation-range offsets via the inline --i custom property (time-based
+     delays don't compose with view() timelines). */
   @media (hover: hover) and (min-width: 721px) and (prefers-reduced-motion: no-preference) {
     .gallery-grid > li {
       animation: develop-in linear both;

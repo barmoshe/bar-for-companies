@@ -9,6 +9,7 @@ import type { Site } from '@/lib/sites';
 import { gsap, Flip, HOUSE_EASE } from '@/lib/anim';
 import { SiteCard } from './SiteCard';
 import { MissingCard, missingMailto } from './MissingCard';
+import { useCardSpotlight } from './useCardSpotlight';
 import './gallery.css';
 
 const matches = (site: Site, q: string) =>
@@ -66,6 +67,10 @@ export function Gallery({ sites }: { sites: Site[] }) {
     },
     { scope: sectionRef }
   );
+
+  // GSAP lift + accent spotlight on the hovered/focused plate (replaces the
+  // old CSS wall-dim; the rest of the wall stays fully lit).
+  useCardSpotlight(gridRef);
 
   // Animate the grid reorder with Flip; fall back to a plain re-render on
   // touch layouts, reduced motion, or when the visible set is unchanged.
