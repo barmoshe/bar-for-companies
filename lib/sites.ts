@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'insait',
+    company: 'Insait',
+    role: 'LLM Solutions Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-insait.vercel.app',
+    domain: 'insait.io',
+    accent: '#3BC4B6',
+    tile: '#F6F6F4',
+    tagline: 'Their cream fintech console and channel-hub, rebuilt around my LLM workflow loop.',
+    appliedOn: '2026-07-07',
+  },
+  {
     id: 'leo-ai',
     company: 'Leo AI',
     role: 'Full Stack Engineer',
