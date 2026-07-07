@@ -21,6 +21,17 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'torii',
+    company: 'Torii',
+    role: 'Junior Software Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-torii.vercel.app',
+    domain: 'toriihq.com',
+    accent: '#0054FF',
+    tagline: 'Their SaaS/AI governance graph, rebuilt as my MCP integration flow.',
+    appliedOn: '2026-07-07',
+  },
+  {
     id: 'primis',
     company: 'Primis',
     role: 'Full Stack / AI Engineer',
