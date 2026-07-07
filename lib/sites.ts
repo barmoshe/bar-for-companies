@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'axia',
+    company: 'Axia Security',
+    role: 'Full Stack Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-axia.vercel.app',
+    domain: 'axiasecurity.io',
+    accent: '#14B8A6',
+    tile: '#0D1117',
+    tagline: 'Their radar-dark insider-risk manifesto, with my build loop on the scope.',
+    appliedOn: '2026-07-07',
+  },
+  {
     id: 'torii',
     company: 'Torii',
     role: 'Junior Software Engineer',
