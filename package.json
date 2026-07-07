@@ -9,7 +9,8 @@
     "lint": "eslint",
     "logos": "node scripts/logos.mjs",
     "shots": "node scripts/capture.mjs",
-    "verify-shots": "node scripts/verify-shots.mjs"
+    "verify-shots": "node scripts/verify-shots.mjs",
+    "verify-gallery": "node scripts/verify-gallery.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -39,7 +39,7 @@ export function SiteCard({ site }: { site: Site }) {
             alt={t.card.shotAlt(site.id)}
             width={1200}
             height={750}
-            sizes="(max-width: 720px) 100vw, (max-width: 1240px) 33vw, 380px"
+            sizes="(max-width: 720px) 100vw, (max-width: 1099px) 33vw, (max-width: 1359px) 24vw, (max-width: 1619px) 19vw, (max-width: 1879px) 16vw, 250px"
             loading="lazy"
           />
           <span className="card-visit smallcaps" aria-hidden="true">

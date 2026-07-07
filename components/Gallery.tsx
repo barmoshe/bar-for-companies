@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { useLang } from '@/lib/LangContext';
 import { STUDIO_URL } from '@/lib/i18n';
 import type { Site } from '@/lib/sites';
-import { gsap, Flip, ScrollTrigger, HOUSE_EASE } from '@/lib/anim';
+import { gsap, Flip, HOUSE_EASE } from '@/lib/anim';
 import { SiteCard } from './SiteCard';
 import { MissingCard, missingMailto } from './MissingCard';
 import './gallery.css';
@@ -25,35 +25,10 @@ export function Gallery({ sites }: { sites: Site[] }) {
   const q = query.trim().toLowerCase();
   const visible = sites.filter((s) => matches(s, q));
 
-  // Entrance reveals: desktop pointer devices only, once per page load.
-  // CSS never hides the cards, so no-JS and reduced-motion users always
-  // see the grid.
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-      mm.add(
-        '(hover: hover) and (min-width: 721px) and (prefers-reduced-motion: no-preference)',
-        () => {
-          const items = gsap.utils.toArray<HTMLElement>('.gallery-grid > li');
-          if (!items.length) return;
-          gsap.set(items, { autoAlpha: 0, y: 24 });
-          ScrollTrigger.batch(items, {
-            start: 'top 88%',
-            once: true,
-            onEnter: (batch) =>
-              gsap.to(batch, {
-                autoAlpha: 1,
-                y: 0,
-                duration: 0.7,
-                ease: HOUSE_EASE,
-                stagger: 0.08,
-              }),
-          });
-        }
-      );
-    },
-    { scope: sectionRef }
-  );
+  // Entrance reveals are pure CSS scroll timelines now (develop-in in
+  // gallery.css): plates develop as the wall scrolls, staggered by the
+  // per-li --i below. CSS never hides the cards, so no-JS, reduced-motion,
+  // and no-timeline-support users always see the grid.
 
   // Cursor paper highlight: one rAF-throttled pointermove writing CSS vars.
   useGSAP(
@@ -109,12 +84,13 @@ export function Gallery({ sites }: { sites: Site[] }) {
         commit();
         return;
       }
-      // Hand li opacity/transform ownership from the entrance animation
-      // to Flip the first time the user filters.
+      // Hand li ownership from the CSS development animation to Flip the
+      // first time the user filters (gallery.css releases the animation on
+      // [data-filtered]). Set before Flip.getState so the boxes are
+      // measured with the animation released.
       if (!filteredOnce.current) {
         filteredOnce.current = true;
-        ScrollTrigger.getAll().forEach((t) => t.kill());
-        gsap.set(grid.querySelectorAll(':scope > li'), { clearProps: 'all' });
+        grid.dataset.filtered = '';
       }
       const state = Flip.getState(grid.querySelectorAll(':scope > li'));
       flushSync(commit);
@@ -143,7 +119,7 @@ export function Gallery({ sites }: { sites: Site[] }) {
   return (
     <section
       ref={sectionRef}
-      className="gallery container"
+      className="gallery"
       aria-label={t.gallery.sectionLabel}
     >
       <div className="gallery-toolbar">
@@ -231,12 +207,20 @@ export function Gallery({ sites }: { sites: Site[] }) {
         </div>
       ) : (
         <ul ref={gridRef} className="gallery-grid">
-          {visible.map((site) => (
-            <li key={site.id} data-flip-id={site.id}>
+          {visible.map((site, i) => (
+            <li
+              key={site.id}
+              data-flip-id={site.id}
+              style={{ '--i': i % 4 } as React.CSSProperties}
+            >
               <SiteCard site={site} />
             </li>
           ))}
-          <li key="missing" data-flip-id="missing">
+          <li
+            key="missing"
+            data-flip-id="missing"
+            style={{ '--i': visible.length % 4 } as React.CSSProperties}
+          >
             <MissingCard />
           </li>
         </ul>

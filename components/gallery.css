@@ -2,6 +2,17 @@
   padding: 8px 24px 84px;
 }
 
+/* Desktop: the wall breaks out of the reading column. The hero and footer
+   stay at the 1240px .container width; the exhibition spans the room (the
+   section no longer carries .container - see Gallery.tsx). Gated >=721px so
+   the mobile feed keeps its exact 18px gutters. */
+@media (min-width: 721px) {
+  .gallery {
+    max-width: min(96vw, 1760px);
+    margin-inline: auto;
+  }
+}
+
 /* count on the left, contained search field on the right */
 .gallery-toolbar {
   border-bottom: 1px solid var(--hairline);
@@ -171,6 +182,34 @@
   z-index: 1;
 }
 
+/* Explicit column ramp on the broken-out wall: auto-fill stays below 1100px
+   (identical to today), then the wall densifies - more plates per row, the
+   gaps tighten. Tile width never drops under ~224px, the plaque's floor. */
+@media (min-width: 1100px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(24px, 2.2vw, 36px) clamp(16px, 1.4vw, 24px);
+  }
+}
+
+@media (min-width: 1360px) {
+  .gallery-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1620px) {
+  .gallery-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1880px) {
+  .gallery-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
 /* cursor paper highlight: a faint wash of lifted paper following the
    pointer; JS writes --mx/--my/--spot-o, attached only on fine pointers */
 .gallery-grid::before {
@@ -181,7 +220,8 @@
   pointer-events: none;
   opacity: var(--spot-o, 0);
   background: radial-gradient(
-    480px circle at calc(var(--mx, 50%) + 40px) calc(var(--my, 50%) + 40px),
+    clamp(480px, 34vw, 640px) circle at calc(var(--mx, 50%) + 40px)
+      calc(var(--my, 50%) + 40px),
     color-mix(in oklch, var(--surface) 55%, white),
     transparent 70%
   );
@@ -569,6 +609,27 @@
       animation-range: entry 0% entry 60%;
     }
   }
+
+  /* Desktop: plates develop like prints as the wall scrolls up. Lives on
+     the li, NOT .card - the :has() wall-dim owns .card's opacity/filter and
+     an active animation there would override it. Uses `translate` so Flip's
+     transform and the .card-frame hover lift never collide. Stagger comes
+     from per-item animation-range offsets via the inline --i custom
+     property (time-based delays don't compose with view() timelines). */
+  @media (hover: hover) and (min-width: 721px) and (prefers-reduced-motion: no-preference) {
+    .gallery-grid > li {
+      animation: develop-in linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 6%) entry
+        calc(55% + var(--i, 0) * 6%);
+    }
+
+    /* Once the user filters, Flip owns the li boxes - the CSS twin of the
+       old ScrollTrigger clearProps handoff (see Gallery.tsx). */
+    .gallery-grid[data-filtered] > li {
+      animation: none;
+    }
+  }
 }
 
 @keyframes feed-in {
@@ -579,6 +640,19 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes develop-in {
+  from {
+    opacity: 0.2;
+    translate: 0 18px;
+    filter: saturate(0.5) sepia(0.14);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: none;
   }
 }
 
