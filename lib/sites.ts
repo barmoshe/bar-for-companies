@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'moon-active',
+    company: 'Moon Active',
+    role: 'Full Stack Developer (R&D)',
+    roleType: 'fullstack',
+    url: 'https://bar-for-moon-active.vercel.app',
+    domain: 'moonactive.com',
+    accent: '#FFAD00',
+    tile: '#000000',
+    tagline: 'Their black-and-gold game brand, with a playable Coin Master-style mini-game I built to prove the role.',
+    appliedOn: '2026-07-07',
+  },
+  {
     id: 'insait',
     company: 'Insait',
     role: 'LLM Solutions Engineer',
