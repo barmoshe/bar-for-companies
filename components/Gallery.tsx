@@ -24,13 +24,19 @@ export function Gallery({
 }) {
   const { t, lang } = useLang();
   const [query, setQuery] = useState('');
+  const [sortByViews, setSortByViews] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLUListElement>(null);
   const filteredOnce = useRef(false);
 
   const q = query.trim().toLowerCase();
-  const visible = sites.filter((s) => matches(s, q));
+  const filtered = sites.filter((s) => matches(s, q));
+  // Sort is a view over the filtered set; a stable sort keeps the shuffled
+  // order among cards with equal counts. Counts are the page-load values.
+  const visible = sortByViews
+    ? [...filtered].sort((a, b) => (counts[b.id] ?? 0) - (counts[a.id] ?? 0))
+    : filtered;
 
   // Entrance reveals are pure CSS scroll timelines now (develop-in in
   // gallery.css): plates develop as the wall scrolls, staggered by the
@@ -80,23 +86,20 @@ export function Gallery({
 
   // Animate the grid reorder with Flip; fall back to a plain re-render on
   // touch layouts, reduced motion, or when the visible set is unchanged.
-  const applyFilter = (nextQuery: string, commit: () => void) => {
+  // Animate any grid reorder (filter or sort) with Flip; fall back to a plain
+  // re-render on touch layouts, reduced motion, or a missing grid.
+  const flipReorder = (commit: () => void) => {
       const grid = gridRef.current;
-      const nextQ = nextQuery.trim().toLowerCase();
-      const sameSet =
-        visible.length === sites.filter((s) => matches(s, nextQ)).length &&
-        visible.every((s) => matches(s, nextQ));
-      const skip =
+      if (
         !grid ||
-        sameSet ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-        window.matchMedia('(max-width: 720px)').matches;
-      if (skip) {
+        window.matchMedia('(max-width: 720px)').matches
+      ) {
         commit();
         return;
       }
       // Hand li ownership from the CSS development animation to Flip the
-      // first time the user filters (gallery.css releases the animation on
+      // first time the wall reorders (gallery.css releases the animation on
       // [data-filtered]). Set before Flip.getState so the boxes are
       // measured with the animation released.
       if (!filteredOnce.current) {
@@ -118,6 +121,22 @@ export function Gallery({
         onLeave: (els) => gsap.to(els, { autoAlpha: 0, duration: 0.25 }),
       });
   };
+
+  const applyFilter = (nextQuery: string, commit: () => void) => {
+    // Skip the animation when the visible set is unchanged (e.g. typing a
+    // character that filters nothing new).
+    const nextQ = nextQuery.trim().toLowerCase();
+    const sameSet =
+      visible.length === sites.filter((s) => matches(s, nextQ)).length &&
+      visible.every((s) => matches(s, nextQ));
+    if (sameSet) {
+      commit();
+      return;
+    }
+    flipReorder(commit);
+  };
+
+  const toggleSort = () => flipReorder(() => setSortByViews((v) => !v));
 
   const onQuery = (v: string) => applyFilter(v, () => setQuery(v));
   const clear = () => {
@@ -188,6 +207,30 @@ export function Gallery({
               </button>
             ) : null}
           </div>
+          <button
+            type="button"
+            className="gallery-sort smallcaps"
+            onClick={toggleSort}
+            aria-pressed={sortByViews}
+            aria-label={t.gallery.sortLabel}
+          >
+            <svg
+              className="gallery-sort-icon"
+              width="13"
+              height="13"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5Z"
+                stroke="currentColor"
+                strokeWidth="1.4"
+              />
+              <circle cx="8" cy="8" r="2.1" fill="currentColor" />
+            </svg>
+            {t.gallery.sortViewed}
+          </button>
         </div>
       </div>
       {visible.length === 0 ? (

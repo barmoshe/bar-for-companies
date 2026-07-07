@@ -47,6 +47,8 @@ export type Dict = {
     countFiltered: (visible: number, total: number) => string;
     searchPlaceholder: string;
     clearLabel: string;
+    sortLabel: string;
+    sortViewed: string;
     emptyKicker: string;
     emptyLead: (q: string) => string;
     emptyNote: string;
@@ -109,6 +111,8 @@ const en: Dict = {
       `${visible} of ${total} ${total === 1 ? 'site' : 'sites'}`,
     searchPlaceholder: 'Search your company',
     clearLabel: 'Clear search',
+    sortLabel: 'Sort',
+    sortViewed: 'Most viewed',
     emptyKicker: 'Not in the catalogue yet',
     emptyLead: (q) => `No site for "${q}" yet. That could change quickly.`,
     emptyNote:
@@ -177,6 +181,8 @@ const he: Dict = {
     countFiltered: (visible, total) => `${visible} מתוך ${total} אתרים`,
     searchPlaceholder: 'חפשו את החברה שלכם',
     clearLabel: 'ניקוי חיפוש',
+    sortLabel: 'מיון',
+    sortViewed: 'הנצפים ביותר',
     emptyKicker: 'עוד לא בקטלוג',
     emptyLead: (q) => `עוד אין אתר עבור "${q}". זה יכול להשתנות מהר.`,
     emptyNote:

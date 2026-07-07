@@ -60,6 +60,49 @@
   color: var(--accent-ui);
 }
 
+/* sort-by-most-viewed toggle */
+.gallery-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding-block: 9px;
+  padding-inline: 14px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.gallery-sort:hover {
+  border-color: color-mix(in oklch, var(--muted) 60%, var(--hairline));
+  color: var(--ink);
+}
+
+.gallery-sort:focus-visible {
+  outline: none;
+  border-color: var(--accent-ui);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+  color: var(--accent-ui);
+}
+
+.gallery-sort[aria-pressed='true'] {
+  background: var(--accent-ui);
+  border-color: var(--accent-ui);
+  color: var(--on-accent);
+}
+
+.gallery-sort-icon {
+  flex: none;
+  opacity: 0.85;
+}
+
 .gallery-field-icon {
   flex: none;
 }
@@ -298,7 +341,7 @@
     transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* live visit count, pinned to the top corner opposite the visit pill */
+/* live visit count, revealed on hover in the top corner opposite the visit pill */
 .card-hits {
   position: absolute;
   inset-block-start: 8px;
@@ -315,6 +358,11 @@
   background: color-mix(in oklch, var(--accent-ui) 82%, transparent);
   backdrop-filter: blur(3px);
   box-shadow: 0 1px 4px oklch(0 0 0 / 0.18);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-hits-icon {
@@ -485,6 +533,12 @@
     opacity: 1;
     transform: none;
     transition-delay: 0.18s;
+  }
+
+  .card:hover .card-hits,
+  .card:focus-visible .card-hits {
+    opacity: 1;
+    transform: none;
   }
 
   .card:hover .card-company {
@@ -687,9 +741,11 @@
   .card-face,
   .card-shot,
   .card-visit,
+  .card-hits,
   .card-media::before,
   .card-media::after,
   .gallery-field,
+  .gallery-sort,
   .gallery-clear,
   .gallery-grid::before,
   .card-missing-cta {
