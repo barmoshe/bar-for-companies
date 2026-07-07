@@ -298,6 +298,30 @@
     transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* live visit count, pinned to the top corner opposite the visit pill */
+.card-hits {
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-start: 8px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--on-accent);
+  background: color-mix(in oklch, var(--accent-ui) 82%, transparent);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 1px 4px oklch(0 0 0 / 0.18);
+}
+
+.card-hits-icon {
+  flex: none;
+  opacity: 0.85;
+}
+
 /* museum label */
 .card-plaque {
   padding: 12px 2px 0;

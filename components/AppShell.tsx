@@ -8,7 +8,13 @@ import { Gallery } from './Gallery';
 import { Hero } from './Hero';
 import { StickyCta } from './StickyCta';
 
-function Shell({ sites }: { sites: Site[] }) {
+function Shell({
+  sites,
+  counts,
+}: {
+  sites: Site[];
+  counts: Record<string, number>;
+}) {
   const { t } = useLang();
   return (
     <>
@@ -17,7 +23,7 @@ function Shell({ sites }: { sites: Site[] }) {
       </a>
       <Hero count={sites.length} names={sites.map((s) => s.company)} />
       <main id="main" tabIndex={-1}>
-        <Gallery sites={sites} />
+        <Gallery sites={sites} counts={counts} />
       </main>
       <Footer />
       <StickyCta />
@@ -28,13 +34,15 @@ function Shell({ sites }: { sites: Site[] }) {
 export function AppShell({
   sites,
   initialLang,
+  counts,
 }: {
   sites: Site[];
   initialLang: Lang;
+  counts: Record<string, number>;
 }) {
   return (
     <LangProvider initialLang={initialLang}>
-      <Shell sites={sites} />
+      <Shell sites={sites} counts={counts} />
     </LangProvider>
   );
 }

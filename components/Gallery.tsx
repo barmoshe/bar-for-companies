@@ -15,7 +15,13 @@ import './gallery.css';
 const matches = (site: Site, q: string) =>
   !q || site.company.toLowerCase().includes(q) || site.id.includes(q);
 
-export function Gallery({ sites }: { sites: Site[] }) {
+export function Gallery({
+  sites,
+  counts,
+}: {
+  sites: Site[];
+  counts: Record<string, number>;
+}) {
   const { t, lang } = useLang();
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
@@ -218,7 +224,7 @@ export function Gallery({ sites }: { sites: Site[] }) {
               data-flip-id={site.id}
               style={{ '--i': i % 4 } as React.CSSProperties}
             >
-              <SiteCard site={site} />
+              <SiteCard site={site} hits={counts[site.id] ?? 0} />
             </li>
           ))}
           <li

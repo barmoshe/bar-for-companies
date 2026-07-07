@@ -1,4 +1,5 @@
 import { AppShell } from '@/components/AppShell';
+import { getAllHits } from '@/lib/hits';
 import type { Lang } from '@/lib/i18n';
 import { SITES, type Site } from '@/lib/sites';
 
@@ -28,7 +29,7 @@ function shuffle(sites: Site[]): Site[] {
  * the per-request shuffle keeps dealing a fresh hand; everything below the
  * shuffle is the client AppShell, which owns the language state.
  */
-export function HomePage({ initialLang }: { initialLang: Lang }) {
+export async function HomePage({ initialLang }: { initialLang: Lang }) {
   const sites = shuffle(SITES);
   // Lead with a random giant; the rest of the wall stays shuffled.
   const lead = sites.findIndex((s) => GIANTS.has(s.id));
@@ -36,5 +37,7 @@ export function HomePage({ initialLang }: { initialLang: Lang }) {
     const [giant] = sites.splice(lead, 1);
     sites.unshift(giant);
   }
-  return <AppShell sites={sites} initialLang={initialLang} />;
+  // Per-card click counts, read server-side so the badges paint with no flash.
+  const counts = await getAllHits();
+  return <AppShell sites={sites} initialLang={initialLang} counts={counts} />;
 }

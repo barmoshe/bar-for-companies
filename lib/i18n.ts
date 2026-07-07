@@ -61,6 +61,7 @@ export type Dict = {
     shotAlt: (id: string) => string;
     visit: string;
     go: string;
+    hits: (n: number) => string;
   };
   missing: {
     mark: string;
@@ -123,6 +124,7 @@ const en: Dict = {
     shotAlt: (id) => `Screenshot of the bar-for-${id} site`,
     visit: 'visit live',
     go: 'Visit the live site',
+    hits: (n) => `${n} ${n === 1 ? 'visit' : 'visits'}`,
   },
   missing: {
     mark: 'this frame is reserved',
@@ -190,6 +192,7 @@ const he: Dict = {
     shotAlt: (id) => `צילום מסך של האתר bar-for-${id}`,
     visit: 'לאתר החי',
     go: 'לביקור באתר החי',
+    hits: (n) => (n === 1 ? 'ביקור אחד' : `${n} ביקורים`),
   },
   missing: {
     mark: 'המסגרת הזאת שמורה',
