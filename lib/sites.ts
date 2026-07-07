@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'varonis',
+    company: 'Varonis',
+    role: 'AI Platform & Adoption Specialist',
+    roleType: 'ai',
+    url: 'https://bar-for-varonis.vercel.app',
+    domain: 'varonis.com',
+    accent: '#0077FF',
+    tile: '#010203',
+    tagline: 'Their dark cosmic "Secure AI" brand, rebuilt around the AI-adoption hub and MCP tooling I ship.',
+    appliedOn: '2026-07-07',
+  },
+  {
     id: 'moon-active',
     company: 'Moon Active',
     role: 'Full Stack Developer (R&D)',
