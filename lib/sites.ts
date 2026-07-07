@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'leo-ai',
+    company: 'Leo AI',
+    role: 'Full Stack Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-leo-ai.vercel.app',
+    domain: 'getleo.ai',
+    accent: '#3B60E2',
+    tile: '#0E0B12',
+    tagline: 'Their drafting-table serif dark, with my build loop drawn as fig. 1.',
+    appliedOn: '2026-07-07',
+  },
+  {
     id: 'axia',
     company: 'Axia Security',
     role: 'Full Stack Engineer',
