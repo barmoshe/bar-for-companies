@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'anecdotes',
+    company: 'anecdotes',
+    role: 'Senior Backend Engineer, Data Platform',
+    roleType: 'fullstack',
+    url: 'https://bar-for-anecdotes.vercel.app',
+    domain: 'anecdotes.ai',
+    accent: '#00DCE8',
+    tile: '#031926',
+    tagline: 'Their AI-native GRC look, rebuilt as a CV around the Temporal orchestration and agents I ship.',
+    appliedOn: '2026-07-09',
+  },
+  {
     id: 'varonis',
     company: 'Varonis',
     role: 'AI Platform & Adoption Specialist',
