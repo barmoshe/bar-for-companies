@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'walkme',
+    company: 'WalkMe',
+    role: 'Full Stack Engineer, AI Applications',
+    roleType: 'fullstack',
+    url: 'https://bar-for-walkme.vercel.app',
+    domain: 'walkme.com',
+    accent: '#FFFB4D',
+    tile: '#0C0B40',
+    tagline: 'Their navy-and-yellow DAP brand, rebuilt around their See/Unify/Execute verbs and the AI apps I ship.',
+    appliedOn: '2026-07-09',
+  },
+  {
     id: 'anecdotes',
     company: 'anecdotes',
     role: 'Senior Backend Engineer, Data Platform',
