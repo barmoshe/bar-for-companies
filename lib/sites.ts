@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'travelbooster',
+    company: 'Travel Booster',
+    role: 'AI Fullstack Developer',
+    roleType: 'ai',
+    url: 'https://bar-for-travelbooster.vercel.app',
+    domain: 'travelbooster.com',
+    accent: '#771FFF',
+    tile: '#2A1052',
+    tagline: 'Their deep-purple travel-ERP brand, rebuilt around their engine diagram and the LLM, MCP, and agent layer I ship.',
+    appliedOn: '2026-07-09',
+  },
+  {
     id: 'walkme',
     company: 'WalkMe',
     role: 'Full Stack Engineer, AI Applications',
