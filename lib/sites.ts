@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'novee-security',
+    company: 'Novee',
+    role: 'AI Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-novee-security.vercel.app',
+    domain: 'novee.security',
+    accent: '#8E55FD',
+    tile: '#140945',
+    tagline: 'Their dark neon-gym brand for offensive AI, rebuilt around an evaluation training loop and the eval harness the role is really about.',
+    appliedOn: '2026-07-09',
+  },
+  {
     id: 'travelbooster',
     company: 'Travel Booster',
     role: 'AI Fullstack Developer',
