@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'temporal',
+    company: 'Temporal',
+    role: 'Generic application',
+    roleType: 'ai',
+    url: 'https://bar-for-temporal.vercel.app',
+    domain: 'temporal.io',
+    accent: '#8E5DFF',
+    tile: '#141414',
+    tagline: 'Their ultraviolet Durable Execution brand, rebuilt around the honest hook: three Temporal side projects, one featured on their own Code Exchange.',
+    appliedOn: '2026-07-11',
+  },
+  {
     id: 'centrical',
     company: 'Centrical',
     role: 'AI Focused Full Stack Developer',
