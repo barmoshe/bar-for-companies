@@ -21,6 +21,17 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'daisy',
+    company: 'Daisy',
+    role: 'Senior Developer, Agentic AI',
+    roleType: 'ai',
+    url: 'https://bar-for-daisy.vercel.app',
+    domain: 'joindaisy.com',
+    accent: '#006956',
+    tagline: 'Their cream-and-green building OS brand, rebuilt around agent teammates with a human approval gate: the way they say they want to work is the way I already do.',
+    appliedOn: '2026-07-11',
+  },
+  {
     id: 'novee-security',
     company: 'Novee',
     role: 'AI Engineer',
