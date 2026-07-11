@@ -882,6 +882,18 @@ export const SITES: Site[] = [
     tagline: 'Their gradient ribbon and a builds.ts code panel of my work.',
     appliedOn: '2026-07-06',
   },
+  {
+    id: 'lemonade',
+    company: 'Lemonade',
+    role: 'Generic application',
+    roleType: 'other',
+    url: 'https://bar-for-lemonade.vercel.app',
+    domain: 'lemonade.com',
+    accent: '#FF0083',
+    tile: '#4A4A4A',
+    tagline: 'Their checkbox policy cards, my skills as the bundle.',
+    appliedOn: '2026-07-11',
+  },
 ];
 
 export const logoOf = (s: Site) => `/logos/${s.id}.png`;
