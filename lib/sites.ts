@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'centrical',
+    company: 'Centrical',
+    role: 'AI Focused Full Stack Developer',
+    roleType: 'ai',
+    url: 'https://bar-for-centrical.vercel.app',
+    domain: 'centrical.com',
+    accent: '#E11C8E',
+    tile: '#211551',
+    tagline: 'Their indigo performance-OS brand, rebuilt around a five-step shipping accordion and the MCP hook: they just wired their platform into Claude, and MCP servers are the work on the page.',
+    appliedOn: '2026-07-11',
+  },
+  {
     id: 'weunica',
     company: 'WeUnica',
     role: 'Junior Full-Stack Developer',
