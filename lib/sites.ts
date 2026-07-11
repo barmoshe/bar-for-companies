@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'weunica',
+    company: 'WeUnica',
+    role: 'Junior Full-Stack Developer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-weunica.vercel.app',
+    domain: 'weunica.com',
+    accent: '#55A4E4',
+    tile: '#000000',
+    tagline: 'Their strict black-and-white Montserrat brand, rebuilt around the rocket milestone trail: an e2e dev shop pitched by someone who ships e2e.',
+    appliedOn: '2026-07-11',
+  },
+  {
     id: 'daisy',
     company: 'Daisy',
     role: 'Senior Developer, Agentic AI',
