@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'qodo',
+    company: 'Qodo',
+    role: 'Applied AI Engineer, Partnerships',
+    roleType: 'ai',
+    url: 'https://bar-for-qodo.vercel.app',
+    domain: 'qodo.ai',
+    accent: '#7968FA',
+    tile: '#111013',
+    tagline: 'Their near-black, purple-accented AI code-review brand, rebuilt around an honest Q&A that names the real gaps against the JD instead of papering over them.',
+    appliedOn: '2026-07-12',
+  },
+  {
     id: 'temporal',
     company: 'Temporal',
     role: 'Generic application',
