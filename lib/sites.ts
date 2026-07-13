@@ -21,6 +21,17 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'aqurate',
+    company: 'Aqurate',
+    role: 'Prompt Engineer (recruiting agency, client undisclosed)',
+    roleType: 'ai',
+    url: 'https://bar-for-aqurate.vercel.app',
+    domain: 'aqurate-data.com',
+    accent: '#5E17EB',
+    tagline: 'Their white-and-purple BI/data brand, rebuilt around an animated banner-slider hero and radius-32 cards, reworked in Aqurate’s real visual language read live off their site.',
+    appliedOn: '2026-07-13',
+  },
+  {
     id: 'qodo',
     company: 'Qodo',
     role: 'Applied AI Engineer, Partnerships',
