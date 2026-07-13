@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'riskified',
+    company: 'Riskified',
+    role: 'Senior AI Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-riskified.vercel.app',
+    domain: 'riskified.com',
+    accent: '#4C3EFF',
+    tile: '#080E3F',
+    tagline: 'Their deep navy-teal AI fraud-prevention brand, rebuilt around an original network-graph illustration and an honest section naming the real years-of-experience gap.',
+    appliedOn: '2026-07-13',
+  },
+  {
     id: 'aqurate',
     company: 'Aqurate',
     role: 'Prompt Engineer (recruiting agency, client undisclosed)',
