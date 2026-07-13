@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'axon-pulse',
+    company: 'Axon Pulse',
+    role: 'AI Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-axon-pulse.vercel.app',
+    domain: 'axon-pulse.com',
+    accent: '#E0F797',
+    tile: '#1B2531',
+    tagline: 'Their dark navy, lime-accented defense-AI brand, rebuilt around an original radar-sweep and waveform illustration for a role that names Claude Code as a hard requirement.',
+    appliedOn: '2026-07-13',
+  },
+  {
     id: 'riskified',
     company: 'Riskified',
     role: 'Senior AI Engineer',
