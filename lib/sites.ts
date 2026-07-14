@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'shopic',
+    company: 'Shopic',
+    role: 'Software Engineer (Full Stack)',
+    roleType: 'fullstack',
+    url: 'https://bar-for-shopic.vercel.app',
+    domain: 'shopic.co',
+    accent: '#705CEA',
+    tile: '#1A0930',
+    tagline: 'Their dark-plum, violet computer-vision brand, rebuilt around an original glowing Vision-orb hub-and-spoke diagram replicating their hero, radiating to my own capabilities instead of cart features.',
+    appliedOn: '2026-07-14',
+  },
+  {
     id: 'axon-pulse',
     company: 'Axon Pulse',
     role: 'AI Engineer',
