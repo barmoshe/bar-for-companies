@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'bdo',
+    company: 'BDO Israel',
+    role: 'AI Solutions Engineer (AI Center of Excellence)',
+    roleType: 'ai',
+    url: 'https://bar-for-bdo.vercel.app',
+    domain: 'bdo.co.il',
+    accent: '#E81A3B',
+    tagline:
+      'Their Hebrew RTL firm brand rebuilt from its own devices, the red hero wedge, the 140deg steel-into-red split and the plus mark, around an AI CoE agent flow: a firm process enters, the plus-mark hub routes it through RAG, MCP integrations and evals, and a measured result comes back out.',
+    appliedOn: '2026-07-14',
+  },
+  {
     id: 'audiocodes',
     company: 'AudioCodes',
     role: 'Full Stack Developer (Meeting Insights)',
