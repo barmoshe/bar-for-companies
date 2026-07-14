@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'audiocodes',
+    company: 'AudioCodes',
+    role: 'Full Stack Developer (Meeting Insights)',
+    roleType: 'fullstack',
+    url: 'https://bar-for-audiocodes.vercel.app',
+    domain: 'audiocodes.com',
+    accent: '#00BCFF',
+    tile: '#000000',
+    tagline: 'Their black cinematic VoiceAI brand in Rajdhani and Poppins, centered on a working mini Meeting Insights panel: a scripted meeting streams through a waveform and AI insight cards pop in live, twice, once in a phone frame.',
+    appliedOn: '2026-07-14',
+  },
+  {
     id: 'shopic',
     company: 'Shopic',
     role: 'Software Engineer (Full Stack)',
