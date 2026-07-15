@@ -102,15 +102,32 @@ try {
     const firstCard = page.locator('.card').first();
     await firstCard.hover();
     await page.waitForTimeout(700);
-    const { clip, siblingOpacity } = await page.evaluate(() => {
+    const { clip, glow, lift, siblingOpacity } = await page.evaluate(() => {
       const cards = [...document.querySelectorAll('.card')];
       return {
         clip: getComputedStyle(cards[0].querySelector('.card-shot')).clipPath,
+        // GSAP lift+spotlight (useCardSpotlight): the hovered plate tweens
+        // --glow to 1 and its frame lifts (translateY(-8) scale(1.02)).
+        glow: Number(getComputedStyle(cards[0]).getPropertyValue('--glow')),
+        lift: getComputedStyle(cards[0].querySelector('.card-frame')).transform,
         siblingOpacity: Number(getComputedStyle(cards[2]).opacity),
       };
     });
     assert(clip === 'inset(0px)' || clip === 'inset(0)', 'hover: shot wipes open', clip);
-    assert(Math.abs(siblingOpacity - 0.55) < 0.05, 'hover: wall dims around the lit plate', String(siblingOpacity));
+    // The wall-dim was dropped for a GSAP lift+spotlight (commit 3e870c5):
+    // only the hovered plate moves — it lifts with an accent glow while the
+    // rest of the wall stays fully lit.
+    assert(glow > 0.9, 'hover: lit plate gets its spotlight glow', String(glow));
+    assert(
+      lift !== 'none' && lift !== 'matrix(1, 0, 0, 1, 0, 0)',
+      'hover: lit plate lifts off the wall',
+      lift,
+    );
+    assert(
+      Math.abs(siblingOpacity - 1) < 0.05,
+      'hover: the rest of the wall stays fully lit',
+      String(siblingOpacity),
+    );
 
     // keyboard parity: drive real Tab presses until a card holds focus
     // (focus-visible needs real keyboard input, not element.focus()).

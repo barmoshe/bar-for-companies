@@ -5,9 +5,9 @@ application site rebuilt in that company's own visual language, with my work
 inside it. This repo is the gallery of all of them, live at
 [bar-for-companies.vercel.app](https://bar-for-companies.vercel.app).
 
-Each card shows the company's logo; hover (or focus) reveals a screenshot of
-the live site, and clicking opens it. On touch screens the screenshot is
-always visible.
+Each card shows the company's logo; hover (or focus) wipes a screenshot of
+the live site across the plate, which lifts off the wall with an accent glow,
+and clicking opens it. On touch screens the screenshot is always visible.
 
 ## How it works
 
@@ -21,6 +21,11 @@ always visible.
   1200px-wide webp files into `public/shots/`.
 - `scripts/verify-shots.mjs` asserts every site has a real logo and a
   non-blank screenshot.
+- `scripts/verify-gallery.mjs` boots the built app and asserts the wall
+  behaves: the column ramp and breakout width, the hover lift+spotlight (the
+  lit plate lifts with an accent glow while the rest of the wall stays fully
+  lit), keyboard parity, RTL, the search filter, and the mobile feed. Run it
+  against a build (`npm run build` first).
 
 ```bash
 npm install

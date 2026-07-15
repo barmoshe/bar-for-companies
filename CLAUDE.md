@@ -29,3 +29,9 @@ hover/focus (always visible on touch), click opens the live site.
   logo file wins over the fetch script (it skips existing files).
 - Screenshots capture with reducedMotion: 'reduce' so animated heroes render
   settled instead of black; verify via DOM text length, not pixels.
+- The gallery wall's hover effect is a GSAP lift+spotlight (`useCardSpotlight`):
+  only the hovered plate moves, lifting with an accent glow while the rest of
+  the wall stays fully lit. The old CSS wall-dim (fading every other tile) was
+  dropped. `npm run verify-gallery` asserts this against a build (`npm run
+  build` first) alongside the column ramp, keyboard/RTL parity, filter, and
+  mobile feed.
