@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'finout',
+    company: 'Finout',
+    role: 'Generative AI Technologist',
+    roleType: 'ai',
+    url: 'https://bar-for-finout.vercel.app',
+    domain: 'finout.io',
+    accent: '#38B28E',
+    tile: '#1B1F1D',
+    tagline:
+      "Their green gridded FinOps brand in Lora and Poppins, centered on a working rebuild of Finout's own agent loop: a Detector flags a Kubernetes spike while dismissing a seasonal bump, an Investigator builds a case file where every claim cites its source, and an Orchestrator auto-applies the reversible fix but holds the destructive one for human approval.",
+    appliedOn: '2026-07-15',
+  },
+  {
     id: 'bdo',
     company: 'BDO Israel',
     role: 'AI Solutions Engineer (AI Center of Excellence)',
