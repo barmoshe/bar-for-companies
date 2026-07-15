@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'laguna',
+    company: 'Laguna Health',
+    role: 'Product-Minded Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-laguna.vercel.app',
+    domain: 'lagunahealth.com',
+    accent: '#783BF2',
+    tile: '#000040',
+    tagline:
+      "Their deep-navy conversational-AI brand in Source Serif 4 and Poppins, with the magenta-to-purple gradient and sparkle motifs, centered on a rebuild of Laguna's own conversation thread: a rough requirement flows through a Cursor and Claude Code node into architecture, product and review, and lands on a shipped feature. Their 'less busywork, more human work' recast as less typing, more engineering judgment.",
+    appliedOn: '2026-07-15',
+  },
+  {
     id: 'ourcrowd',
     company: 'OurCrowd',
     role: 'Full Stack Developer (Product)',
