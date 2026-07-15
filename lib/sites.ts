@@ -29,7 +29,7 @@ export const SITES: Site[] = [
     domain: 'snowflake.com',
     accent: '#249EDC',
     tagline:
-      "Snowflake's brand in their single blue, their 'CODE / WORK' split headline recast as 'IDEA / SHIPPED'. The centerpiece is a Snowsight-style SQL worksheet, SELECT project, stack, proof FROM bar.shipped, that returns my work as query rows.",
+      "Snowflake's brand in their single blue, their 'CODE / WORK' split headline recast as 'IDEA / SHIPPED', around a Snowsight-style SQL worksheet that returns my shipped work as query rows.",
     appliedOn: '2026-07-15',
   },
   {
@@ -42,7 +42,7 @@ export const SITES: Site[] = [
     accent: '#A855F7',
     tile: '#0A0619',
     tagline:
-      "An agency posting with no employer to brand for, so I made the design itself the pitch: a live multi-theme system you flip between Neural Aurora, a neon Console, and a navy Blueprint, each a full re-skin. The centerpiece is an animated agent loop, plan, tools, act, observe, memory, with a token orbiting it and a retry arc that fires when a model call fails. Role-forward and honest: entailer on npm, a Claude Code plugin, a Temporal Code Exchange pipeline.",
+      'No employer to brand for, so the design is the pitch: a live theme-switcher (Neural Aurora, neon Console, navy Blueprint) around an animated plan-act-observe agent loop with a retry arc.',
     appliedOn: '2026-07-15',
   },
   {
@@ -55,7 +55,7 @@ export const SITES: Site[] = [
     accent: '#783BF2',
     tile: '#000040',
     tagline:
-      "Their deep-navy conversational-AI brand in Source Serif 4 and Poppins, with the magenta-to-purple gradient and sparkle motifs, centered on a rebuild of Laguna's own conversation thread: a rough requirement flows through a Cursor and Claude Code node into architecture, product and review, and lands on a shipped feature. Their 'less busywork, more human work' recast as less typing, more engineering judgment.",
+      "Their deep-navy conversational-AI brand in Source Serif 4 and Poppins, rebuilt around Laguna's own conversation thread: a rough requirement flowing through Cursor and Claude Code to a shipped feature.",
     appliedOn: '2026-07-15',
   },
   {
@@ -67,7 +67,7 @@ export const SITES: Site[] = [
     domain: 'ourcrowd.com',
     accent: '#0074A8',
     tagline:
-      "Their investment-platform brand in Merriweather and Open Sans, the candlestick hero chart rebuilt from scratch, centered on their deal-evaluation funnel recast as an agentic pipeline: intake, LLM enrichment and due-diligence tool calls run on their own, and the one step that moves capital waits for a human. The hook is that OurCrowd's AI Fund backed Anthropic, the stack Bar ships production tooling on.",
+      "Their investment-platform brand with the candlestick hero rebuilt from scratch, around a deal-evaluation pipeline that gates the capital-moving step on a human; their AI Fund backed Anthropic.",
     appliedOn: '2026-07-15',
   },
   {
@@ -80,7 +80,7 @@ export const SITES: Site[] = [
     accent: '#38B28E',
     tile: '#1B1F1D',
     tagline:
-      "Their green gridded FinOps brand in Lora and Poppins, centered on a working rebuild of Finout's own agent loop: a Detector flags a Kubernetes spike while dismissing a seasonal bump, an Investigator builds a case file where every claim cites its source, and an Orchestrator auto-applies the reversible fix but holds the destructive one for human approval.",
+      "Their green gridded FinOps brand in Lora and Poppins, rebuilt around Finout's own detect-investigate-orchestrate agent loop that gates the destructive fix on human approval.",
     appliedOn: '2026-07-15',
   },
   {
@@ -92,7 +92,7 @@ export const SITES: Site[] = [
     domain: 'bdo.co.il',
     accent: '#E81A3B',
     tagline:
-      'Their Hebrew RTL firm brand rebuilt from its own devices, the red hero wedge, the 140deg steel-into-red split and the plus mark, around an AI CoE agent flow: a firm process enters, the plus-mark hub routes it through RAG, MCP integrations and evals, and a measured result comes back out.',
+      'Their Hebrew RTL firm brand rebuilt from its own devices, the red hero wedge and plus mark, around an AI CoE agent flow that routes a firm process through RAG, MCP and evals to a measured result.',
     appliedOn: '2026-07-14',
   },
   {
