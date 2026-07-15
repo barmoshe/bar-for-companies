@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'ethosia',
+    company: 'Ethosia',
+    role: 'AI Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-ethosia.vercel.app',
+    domain: 'ethosia.co.il',
+    accent: '#A855F7',
+    tile: '#0A0619',
+    tagline:
+      "An agency posting with no employer to brand for, so I made the design itself the pitch: a live multi-theme system you flip between Neural Aurora, a neon Console, and a navy Blueprint, each a full re-skin. The centerpiece is an animated agent loop, plan, tools, act, observe, memory, with a token orbiting it and a retry arc that fires when a model call fails. Role-forward and honest: entailer on npm, a Claude Code plugin, a Temporal Code Exchange pipeline.",
+    appliedOn: '2026-07-15',
+  },
+  {
     id: 'laguna',
     company: 'Laguna Health',
     role: 'Product-Minded Engineer',
