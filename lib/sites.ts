@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'ourcrowd',
+    company: 'OurCrowd',
+    role: 'Full Stack Developer (Product)',
+    roleType: 'fullstack',
+    url: 'https://bar-for-ourcrowd.vercel.app',
+    domain: 'ourcrowd.com',
+    accent: '#0074A8',
+    tagline:
+      "Their investment-platform brand in Merriweather and Open Sans, the candlestick hero chart rebuilt from scratch, centered on their deal-evaluation funnel recast as an agentic pipeline: intake, LLM enrichment and due-diligence tool calls run on their own, and the one step that moves capital waits for a human. The hook is that OurCrowd's AI Fund backed Anthropic, the stack Bar ships production tooling on.",
+    appliedOn: '2026-07-15',
+  },
+  {
     id: 'finout',
     company: 'Finout',
     role: 'Generative AI Technologist',
