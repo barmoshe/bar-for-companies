@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'snowflake',
+    company: 'Snowflake',
+    role: 'Generic application',
+    roleType: 'other',
+    url: 'https://bar-for-snowflake.vercel.app',
+    domain: 'snowflake.com',
+    accent: '#249EDC',
+    tagline:
+      "Snowflake is putting agents next to everyone's data with Cortex and CoCo, so I built the pitch in their own grammar: a white canvas, the single Snowflake blue, pill buttons, and their 'CODE / WORK' split headline recast as 'IDEA [snowflake] SHIPPED'. The centerpiece is a Snowsight-style SQL worksheet, SELECT project, stack, proof FROM bar.shipped, that returns my work as query rows: bar for companies, the Temporal Code Exchange pipeline, MDP on npm, Biome Synth. Focus areas map to their world, from LLM apps and MCP tooling to polyglot execution the way Snowpark asks you to think.",
+    appliedOn: '2026-07-15',
+  },
+  {
     id: 'ethosia',
     company: 'Ethosia',
     role: 'AI Engineer',
