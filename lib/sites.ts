@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'appsflyer',
+    company: 'AppsFlyer',
+    role: 'Backend Engineer: IRS billing team',
+    roleType: 'fullstack',
+    url: 'https://bar-for-appsflyer.vercel.app',
+    domain: 'appsflyer.com',
+    accent: '#9B6BFF',
+    tile: '#130928',
+    tagline:
+      'Their white-and-violet product look with the deep-purple footer, rebuilt around the billing pitch: durable workflows and cloud plumbing told to the team that runs the Income Recognition System.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'jobgether',
     company: 'Jobgether',
     role: 'Software Craftsperson: Node.js / React.js / AI',
