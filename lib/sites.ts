@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'wedev',
+    company: 'WeDev Technologies',
+    role: 'Junior FullStack Web Developer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-wedev.vercel.app',
+    domain: 'wedev.co.il',
+    accent: '#5B3FD6',
+    tile: '#210759',
+    tagline:
+      'Their collage-grid violet homepage rebuilt in Hebrew, with a working kiosk-sync diagram standing in for the JD Sports Shopify-Plus/Priority-ERP project their posting names.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'simply',
     company: 'Simply',
     role: 'Senior Software Engineer (R&D)',
