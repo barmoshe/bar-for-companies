@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'simply',
+    company: 'Simply',
+    role: 'Senior Software Engineer (R&D)',
+    roleType: 'fullstack',
+    url: 'https://bar-for-simply.vercel.app',
+    domain: 'hellosimply.com',
+    accent: '#8217FF',
+    tile: '#200854',
+    tagline:
+      "Their purple-haze creative-companion brand, spark seals and all, rebuilt around a playable Simply-style lesson: falling notes, real Web Audio, and every phrase you land unlocks proof I ship.",
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'snowflake',
     company: 'Snowflake',
     role: 'Generic application',
