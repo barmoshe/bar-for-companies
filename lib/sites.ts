@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'adtran',
+    company: 'Adtran',
+    role: 'Software Engineer: NMS R&D',
+    roleType: 'fullstack',
+    url: 'https://bar-for-adtran.vercel.app',
+    domain: 'adtran.com',
+    accent: '#00A0C8',
+    tile: '#000000',
+    tagline:
+      'Their black header, 4px spectrum strip and animated gradient headline, rebuilt stop by stop, with an NMS-style topology map recast as my agent build pipeline: the agent writes, I verify.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'datamint',
     company: 'Datamint',
     role: 'Founding Engineer: AI for Finance',
