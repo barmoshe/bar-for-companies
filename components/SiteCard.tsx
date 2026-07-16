@@ -14,16 +14,13 @@ export function SiteCard({ site, hits }: { site: Site; hits: number }) {
     ...(site.tile ? { background: site.tile } : {}),
   } as React.CSSProperties;
 
-  // Every click is a hit: bump the badge immediately, then record it globally.
-  // Fire-and-forget with keepalive so the request survives the new-tab open.
+  // The real count now comes from actual visits to the site itself: each
+  // bar-for-* deployment beacons /api/hits on load (see public/track.js). The
+  // card only bumps the badge optimistically for instant feedback — it does not
+  // write, so a click-through isn't double-counted. The badge self-heals to the
+  // true visit count on the next gallery load.
   const recordHit = () => {
     setCount((c) => c + 1);
-    void fetch('/api/hits', {
-      method: 'POST',
-      keepalive: true,
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ id: site.id }),
-    }).catch(() => {});
   };
 
   return (
