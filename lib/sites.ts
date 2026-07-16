@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'rafael',
+    company: 'Rafael',
+    role: 'Full Stack Software Engineer: TLV R&D',
+    roleType: 'fullstack',
+    url: 'https://bar-for-rafael.vercel.app',
+    domain: 'rafael.co.il',
+    accent: '#2049E1',
+    tile: '#06074D',
+    tagline:
+      'Their deep-navy flagship look with the red-period headline and dome-of-arcs motif, rebuilt bilingual (EN + RTL Hebrew), told by someone who first met their work from the operator\'s seat of Iron Dome.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'owncore',
     company: 'OwnCore Networks',
     role: 'Workflow Developer',
