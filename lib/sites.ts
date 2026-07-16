@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'vayu',
+    company: 'Vayu',
+    role: 'Senior Fullstack Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-vayu.vercel.app',
+    domain: 'withvayu.com',
+    accent: '#213BC1',
+    tile: '#E0DCDC',
+    tagline:
+      'Their warm greige field, Space Grotesk headlines, and segmented-ball hero rebuilt as an animated SVG, telling the event-driven billing pitch back to the team that meters revenue in real time.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'appsflyer',
     company: 'AppsFlyer',
     role: 'Backend Engineer: IRS billing team',
