@@ -21,6 +21,19 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'datamint',
+    company: 'Datamint',
+    role: 'Founding Engineer: AI for Finance',
+    roleType: 'ai',
+    url: 'https://bar-for-datamint.vercel.app',
+    domain: 'datamint.biz',
+    accent: '#16A34A',
+    tile: '#064E3B',
+    tagline:
+      'Their gradient-clipped mint headline and ping-dot badge, rebuilt around the actual pitch: I build AI agents that do the chasing, the same agentic work I ship daily.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'wedev',
     company: 'WeDev Technologies',
     role: 'Junior FullStack Web Developer',
