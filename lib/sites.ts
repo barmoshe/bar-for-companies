@@ -21,6 +21,31 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'owncore',
+    company: 'OwnCore Networks',
+    role: 'Workflow Developer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-owncore.vercel.app',
+    domain: 'owncore.com',
+    accent: '#00E5A0',
+    tile: '#080C11',
+    tagline:
+      'Their near-black field, mint accent and outlined Syne headline answered in kind: "Your workflows. My problem.", with the YOUR CORE radar recast as my orchestration stack pulsing around the core.',
+    appliedOn: '2026-07-16',
+  },
+  {
+    id: 'priority-software',
+    company: 'Priority Software',
+    role: 'Full Stack Web Developer: Retail',
+    roleType: 'fullstack',
+    url: 'https://bar-for-priority-software.vercel.app',
+    domain: 'priority-software.com',
+    accent: '#3B37E6',
+    tagline:
+      'Their rotating hero word, aiERP typewriter prompt and lavender stat cards rebuilt from a live brand read, with the POS terminal recast as a hiring cart ringing up my shipped work.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'adtran',
     company: 'Adtran',
     role: 'Software Engineer: NMS R&D',
