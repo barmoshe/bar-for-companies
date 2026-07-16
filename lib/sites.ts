@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'jobgether',
+    company: 'Jobgether',
+    role: 'Software Craftsperson: Node.js / React.js / AI',
+    roleType: 'fullstack',
+    url: 'https://bar-for-jobgether.vercel.app',
+    domain: 'jobgether.com',
+    accent: '#36CE24',
+    tagline:
+      'Their match-score UI turned into the pitch: the real 96 their engine returned, rebuilt as a ring card over the radial-gradient hero, with the floating checklist and new-match cards recast around my own work.',
+    appliedOn: '2026-07-16',
+  },
+  {
     id: 'rafael',
     company: 'Rafael',
     role: 'Full Stack Software Engineer: TLV R&D',
