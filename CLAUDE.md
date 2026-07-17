@@ -17,6 +17,21 @@ hover/focus (always visible on touch), click opens the live site.
 1. Add one entry to `lib/sites.ts` (id = the bar-for-<id> repo suffix).
 2. `npm run logos -- <id>` and `npm run shots -- <id>`.
 3. `npm run verify-shots`, commit, `npx vercel --prod`.
+4. The visit beacon (below) is inherited automatically if the site was
+   scaffolded from `bar-for-starter` — nothing else to wire per-site.
+
+## Visit counter (ADR 0209)
+
+The card badge counts real visits, not gallery clicks. `public/track.js` is a
+tiny hosted beacon every `bar-for-*` site loads (`<script data-bar-for-id>` in
+its `app/layout.tsx`); it POSTs one hit per browser session (sessionStorage
+dedup) to `/api/hits` here. That route is CORS-open (`*`) so any `bar-for-*`
+origin can call it, validates the id against `lib/sites.ts` (`isKnownId`), and
+increments an Upstash Redis hash (`gallery:hits`). `SiteCard` reads the stored
+count and only bumps it optimistically on click — it no longer writes.
+`.claude/scripts/inject-tracker.mjs` (idempotent) wires the beacon into an
+existing site's `layout.tsx`; the `bar-for-starter` template and
+`new-bar-for.mjs` scaffold carry it by default for new sites.
 
 ## Rules
 

@@ -27,6 +27,16 @@ and clicking opens it. On touch screens the screenshot is always visible.
   lit), keyboard parity, RTL, the search filter, and the mobile feed. Run it
   against a build (`npm run build` first).
 
+## Visit counter
+
+Each card's badge counts real visits to that site, not gallery clicks. Every
+`bar-for-*` site loads this repo's hosted `public/track.js` beacon (a `<script
+data-bar-for-id="<id>">` tag in its `app/layout.tsx`), which POSTs one hit per
+browser session to `/api/hits` here. The route is CORS-open (`*`), only
+accepts ids that exist in `lib/sites.ts`, and stores counts in an Upstash Redis
+hash (`gallery:hits`). The gallery card shows that stored count, bumped
+optimistically on click for instant feedback.
+
 ```bash
 npm install
 npm run logos
