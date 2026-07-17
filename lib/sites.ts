@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'millennium',
+    company: 'Millennium',
+    role: 'Forward Deployed AI Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-millennium.vercel.app',
+    domain: 'mlp.com',
+    accent: '#1434CB',
+    tagline:
+      'Their royal-blue Prata headline over drifting waves, ruled stat rows, and the careers-page navy lattice, retold as an agentic-systems pitch to the hedge fund standing up its own AI lab.',
+    appliedOn: '2026-07-17',
+  },
+  {
     id: 'vayu',
     company: 'Vayu',
     role: 'Senior Fullstack Engineer',
