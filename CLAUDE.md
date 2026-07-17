@@ -16,7 +16,9 @@ hover/focus (always visible on touch), click opens the live site.
 
 1. Add one entry to `lib/sites.ts` (id = the bar-for-<id> repo suffix).
 2. `npm run logos -- <id>` and `npm run shots -- <id>`.
-3. `npm run verify-shots`, commit, `npx vercel --prod`.
+3. `npm run verify-shots`, commit, `git push` — the git integration deploys
+   (ADR 0216). `npx vercel --prod` is a guarded fallback only (sync the clone
+   to `origin/main` first); a CLI deploy on top of a push burns 2 deploy slots.
 4. The visit beacon (below) is inherited automatically if the site was
    scaffolded from `bar-for-starter` — nothing else to wire per-site.
 
