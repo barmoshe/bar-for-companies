@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'nogamy',
+    company: 'Nogamy',
+    role: 'AI Engineer / Prompt Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-nogamy.vercel.app',
+    domain: 'nogamy.com',
+    accent: '#9055FF',
+    tagline:
+      'Their midnight particle-and-ripple hero, teal-to-purple gradient and rounded Nogamy type, rebuilt bilingually in English and Hebrew to pitch a prompt engineer to the data house standing up its GenAI practice.',
+    appliedOn: '2026-07-17',
+  },
+  {
     id: 'millennium',
     company: 'Millennium',
     role: 'Forward Deployed AI Engineer',
