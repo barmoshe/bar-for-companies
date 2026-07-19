@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'imagen',
+    company: 'Imagen',
+    role: 'Full Stack Engineer',
+    roleType: 'fullstack',
+    url: 'https://bar-for-imagen.vercel.app',
+    domain: 'imagen-ai.com',
+    accent: '#FF5470',
+    tagline:
+      'Their editorial-serif hero, Trustpilot proof strip, feature tabs and giant genre marquee rebuilt coral-on-ink as a Full Stack pitch, with the Adobe compatibility chips recast as TypeScript, React, Node and Electron.',
+    appliedOn: '2026-07-19',
+  },
+  {
     id: 'nogamy',
     company: 'Nogamy',
     role: 'AI Engineer / Prompt Engineer',
