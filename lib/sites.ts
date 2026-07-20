@@ -852,7 +852,7 @@ export const SITES: Site[] = [
     url: 'https://bar-for-jeen-ai.vercel.app',
     domain: 'jeen.ai',
     accent: '#dd9fe2',
-    tagline: "Cream and lilac in Jeen's enterprise-AI brand, with a hero toggle between two applications and a live governed-answer console.",
+    tagline: "A faithful rebuild of Jeen's real site: a cursor-tracked swirl hero, a two-application role toggle, and a live platform-layer diagram.",
     appliedOn: '2026-07-02',
   },
   {
