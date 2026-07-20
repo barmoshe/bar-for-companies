@@ -847,12 +847,12 @@ export const SITES: Site[] = [
   {
     id: 'jeen-ai',
     company: 'Jeen.AI',
-    role: 'Full Stack Engineer',
-    roleType: 'fullstack',
+    role: 'AI Solution Engineer / Full Stack',
+    roleType: 'ai',
     url: 'https://bar-for-jeen-ai.vercel.app',
     domain: 'jeen.ai',
     accent: '#dd9fe2',
-    tagline: 'Cream and lilac enterprise AI with a governed-answer console.',
+    tagline: "Cream and lilac in Jeen's enterprise-AI brand, with a hero toggle between two applications and a live governed-answer console.",
     appliedOn: '2026-07-02',
   },
   {
