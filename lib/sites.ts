@@ -21,6 +21,18 @@ export type Site = {
 
 export const SITES: Site[] = [
   {
+    id: 'appwork',
+    company: 'AppWork',
+    role: 'AI Enablement Engineer',
+    roleType: 'ai',
+    url: 'https://bar-for-appwork.vercel.app',
+    domain: 'appworkco.com',
+    accent: '#128A4D',
+    tagline:
+      'Their maintenance work-order lifecycle, technician-badge gamification and confetti-green brand, rebuilt so the hero is a live AppWork work order that assigns building the AI enablement layer for twenty engineers to Bar.',
+    appliedOn: '2026-07-23',
+  },
+  {
     id: 'imagen',
     company: 'Imagen',
     role: 'Full Stack Engineer',
