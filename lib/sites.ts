@@ -616,13 +616,14 @@ export const SITES: Site[] = [
   {
     id: 'wix',
     company: 'Wix',
-    role: 'Generic application',
-    roleType: 'other',
+    role: 'xEngineer, AI Creation',
+    roleType: 'ai',
     url: 'https://bar-for-wix.vercel.app',
     domain: 'wix.com',
     accent: '#166AEA',
-    tagline: 'Giant Madefor type and a live editor building the application.',
-    appliedOn: '2026-07-06',
+    tagline:
+      "Wix's real 2026 homepage read live off wix.com and rebuilt: giant weight-400 Madefor headlines, drifting sky and lime blobs, a rotating Meet Bar motif, and a live editor where a prompt becomes a real page, pitching the AI Creation team.",
+    appliedOn: '2026-07-23',
   },
   {
     id: 'microsoft',
